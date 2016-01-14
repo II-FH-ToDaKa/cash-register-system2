@@ -19,13 +19,20 @@ public class cart
     private double  dPricewoTax;
     private double  dTax;
 
-    public class article
+    static public class article
     {
         private char cBarcode[] =new char [MAX_CHAR];
         private String sName;
-        private int iamount;
+        private int iAmount;
         private double dPrice;
 
+        public article(char cBarcode_new[],String sName_new,int iAmount_new,double dPrice_new)
+        {
+            this.cBarcode=cBarcode_new;
+            this.sName=sName_new;
+            this.iAmount=iAmount_new;
+            this.dPrice=dPrice_new;
+        }
         public char[] getBarcode() {
             return cBarcode;
         }
@@ -43,11 +50,11 @@ public class cart
         }
 
         public int getAmount() {
-            return iamount;
+            return iAmount;
         }
 
         public void setAmount(int amount) {
-            this.iamount = amount;
+            this.iAmount = amount;
         }
 
         public  void setPrice(double Price)
