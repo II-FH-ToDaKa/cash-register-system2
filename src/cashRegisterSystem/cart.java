@@ -14,7 +14,7 @@ public class cart
     public static final double TAX_FOOD=1.07;
 
     private List<article> alcartInventory= new ArrayList<article>();
-    private int     iDiscount;
+    private int     iDiscount=100;
     private double  dFullPrice;
     private double  dPricewoTax;
     private double  dTax;

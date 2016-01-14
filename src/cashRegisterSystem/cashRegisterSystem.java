@@ -148,9 +148,9 @@ public class cashRegisterSystem
     /*
     *give an discount to the whole cart (Prices)
     */
-    boolean discount(cart ActualCart, int iAmount)
+    public boolean discount(cart ActualCart, int iDiscount)
     {
-        ActualCart.setiDiscount(iAmount);
+        ActualCart.setiDiscount(iDiscount);
         return true;
     }
     /*

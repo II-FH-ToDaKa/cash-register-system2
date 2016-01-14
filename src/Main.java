@@ -12,6 +12,7 @@ public class Main {
 
         Netto.addArticle(barcode,2,KundeKarl);
         char [] barcode2={'1','1','2','6','3','7','6','5','6','5','8','7','4','4'};
+
         Netto.display_article(barcode2,KundeKarl);
 
     }
