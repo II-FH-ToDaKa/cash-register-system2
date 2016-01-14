@@ -158,33 +158,32 @@ public class cashRegisterSystem
     */
     public boolean other_price(cart ActualCart, char cBarcode[], double dprice)
     {
-
-        //Search Article in Cart
+        //searchArticle in Cart
         int iCurrentCart=0;
+        boolean bWrongArticle=false;
 
         while(!compare_Barcode(ActualCart.getArticle().get(iCurrentCart).getBarcode(),cBarcode))
         {
 
-            if(iCurrentCart==ActualCart.getArticle().size())
+            if(iCurrentCart==ActualCart.getArticle().size()-1)
             {
-                wrong_article(cBarcode);
-                return false;
+                bWrongArticle=true;
+                break;
             }
             iCurrentCart++;
         }
-
-        //search Article in Inventory
-        /*int iCurrentInventory=0;
-        while(!compare_Barcode(inventory.get(iCurrentInventory).getBarcode(),cBarcode)&&(iCurrentInventory<inventory.size()))
+        if(!bWrongArticle)
         {
-            iCurrentInventory++;
+            ActualCart.getArticle().get(iCurrentCart).setPrice(dprice);
+            return true;
+        }
+        else
+        {
+            wrong_article(cBarcode);
+            return false;
         }
 
-        double dNormalPrice;
-        dNormalPrice=inventory.get(iCurrentCart).getPrice();
-        */
-        ActualCart.getArticle().get(iCurrentCart).setPrice(dprice);
-        return true;
+
 
     }
 
@@ -258,6 +257,7 @@ public class cashRegisterSystem
 
            if(iCurrentCart==ActualCart.getArticle().size()-1)
             {
+
                 bWrongArticle=true;
                 break;
             }
@@ -266,12 +266,11 @@ public class cashRegisterSystem
 
 
         int iAmount=ActualCart.getArticle().get(iCurrentCart).getAmount();
-
         //search Article in Inventory
         int iCurrentInventory=0;
-        while(!compare_Barcode(inventory.get(iCurrentInventory).getBarcode(),cBarcode)&&(iCurrentInventory<inventory.size()-1))
+        while(!compare_Barcode(inventory.get(iCurrentInventory).getBarcode(),cBarcode))
         {
-            if(iCurrentCart==ActualCart.getArticle().size()-1)
+            if(iCurrentInventory==ActualCart.getArticle().size()-1)
             {
                 bWrongArticle=true;
                 break;
@@ -285,15 +284,18 @@ public class cashRegisterSystem
         }
         else
         {
+            int iDiscount=ActualCart.getiDiscount();
 
             double dNormalPrice=inventory.get(iCurrentCart).getPrice();
             String sName=inventory.get(iCurrentCart).getName();
-            double dNewPrice=dNormalPrice*iAmount;
+            double dNewPrice=ActualCart.getArticle().get(iCurrentCart).getPrice();
+            dNewPrice=(dNewPrice*iAmount)-(dNewPrice*iAmount*(iDiscount*0.01));
             //Output
 
-            System.out.println(sName+"("+dNormalPrice+"$)");
-            System.out.println(new String(cBarcode)+"\t"+iAmount+"\tx\t"+dNewPrice+"$");
-
+            System.out.print(sName);
+            System.out.printf(" (%1$.2f$)\n",dNormalPrice);
+            System.out.print(new String(cBarcode)+"\t"+iAmount+"\tx\t");
+            System.out.printf("%1$.2f$\n",dNewPrice);
         }
     }
     public void inventory()

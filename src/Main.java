@@ -1,4 +1,5 @@
 import cashRegisterSystem.*;
+import sun.nio.ch.Net;
 
 public class Main {
 
@@ -10,10 +11,16 @@ public class Main {
 
         cart KundeKarl =new cart();
 
-        Netto.addArticle(barcode,2,KundeKarl);
-        char [] barcode2={'1','1','2','6','3','7','6','5','6','5','8','7','4','4'};
+        char [] barcode2={'2','1','2','6','3','7','6','5','6','5','8','7','4','4'};
+        Netto.new_item(barcode2,"Apfel",1.99,3, true);
 
+        Netto.addArticle(barcode, 2, KundeKarl);
+        Netto.addArticle(barcode2, 2, KundeKarl);
+
+        Netto.display_article(barcode,KundeKarl);
         Netto.display_article(barcode2,KundeKarl);
+
+        Netto.statistic();
 
     }
 }
