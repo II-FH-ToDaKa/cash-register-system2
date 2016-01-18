@@ -41,9 +41,12 @@
       <file leaf-file-name="cart.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.8125">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="25" />
-              <folding />
+            <state vertical-scroll-proportion="-6.75">
+              <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
+              <folding>
+                <element signature="e#1748#1749#0" expanded="true" />
+                <element signature="e#1801#1802#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,8 +54,8 @@
       <file leaf-file-name="cashRegisterSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7070064">
-              <caret line="424" column="94" selection-start-line="424" selection-start-column="94" selection-end-line="424" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.14543524">
+              <caret line="547" column="7" selection-start-line="547" selection-start-column="7" selection-end-line="547" selection-end-column="7" />
               <folding>
                 <element signature="e#884#885#0" expanded="true" />
                 <element signature="e#921#922#0" expanded="true" />
@@ -80,19 +83,11 @@
                 <element signature="method#otherPrice#0;class#cashRegisterSystem#0" expanded="false" />
                 <element signature="method#removeFromPrice#0;class#cashRegisterSystem#0" expanded="false" />
                 <element signature="method#displayArticle#0;class#cashRegisterSystem#0" expanded="false" />
-                <element signature="e#17881#17882#0" expanded="true" />
-                <element signature="e#17956#17957#0" expanded="true" />
+                <element signature="method#update#0;class#cashRegisterSystem#0" expanded="false" />
+                <element signature="method#statistic#0;class#cashRegisterSystem#0" expanded="false" />
+                <element signature="e#18326#18327#0" expanded="true" />
+                <element signature="e#18401#18402#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NumberFormatException.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/NumberFormatException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -534,12 +529,25 @@
       <option name="number" value="Default" />
       <updated>1452808872407</updated>
       <workItem from="1452808875473" duration="5912000" />
-      <workItem from="1453110166340" duration="7013000" />
+      <workItem from="1453110166340" duration="9006000" />
     </task>
+    <task id="LOCAL-00001" summary="added a whole bunch of comments and fixed some spelling error in the function where function were written like some_function which isnt coherent with the java codestyle">
+      <created>1453120791711</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1453120791711</updated>
+    </task>
+    <task id="LOCAL-00002" summary="minor changes in comments">
+      <created>1453121176060</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1453121176060</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12925000" />
+    <option name="totallyTimeSpent" value="14918000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="45" width="2182" height="1406" extended-state="6" />
@@ -572,6 +580,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added a whole bunch of comments and fixed some spelling error in the function where function were written like some_function which isnt coherent with the java codestyle" />
+    <MESSAGE value="minor changes in comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes in comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -606,7 +619,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding />
+          <folding>
+            <element signature="e#1748#1749#0" expanded="true" />
+            <element signature="e#1801#1802#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -641,17 +657,11 @@
             <element signature="method#otherPrice#0;class#cashRegisterSystem#0" expanded="false" />
             <element signature="method#removeFromPrice#0;class#cashRegisterSystem#0" expanded="false" />
             <element signature="method#displayArticle#0;class#cashRegisterSystem#0" expanded="false" />
-            <element signature="e#17881#17882#0" expanded="true" />
-            <element signature="e#17956#17957#0" expanded="true" />
+            <element signature="method#update#0;class#cashRegisterSystem#0" expanded="false" />
+            <element signature="method#statistic#0;class#cashRegisterSystem#0" expanded="false" />
+            <element signature="e#18326#18327#0" expanded="true" />
+            <element signature="e#18401#18402#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/NumberFormatException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -665,18 +675,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_65/src.zip!/java/lang/NumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7967146">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.8125">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="25" />
-          <folding />
+        <state vertical-scroll-proportion="-6.75">
+          <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
+          <folding>
+            <element signature="e#1748#1749#0" expanded="true" />
+            <element signature="e#1801#1802#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7070064">
-          <caret line="424" column="94" selection-start-line="424" selection-start-column="94" selection-end-line="424" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.14543524">
+          <caret line="547" column="7" selection-start-line="547" selection-start-column="7" selection-end-line="547" selection-end-column="7" />
           <folding>
             <element signature="e#884#885#0" expanded="true" />
             <element signature="e#921#922#0" expanded="true" />
@@ -704,8 +725,10 @@
             <element signature="method#otherPrice#0;class#cashRegisterSystem#0" expanded="false" />
             <element signature="method#removeFromPrice#0;class#cashRegisterSystem#0" expanded="false" />
             <element signature="method#displayArticle#0;class#cashRegisterSystem#0" expanded="false" />
-            <element signature="e#17881#17882#0" expanded="true" />
-            <element signature="e#17956#17957#0" expanded="true" />
+            <element signature="method#update#0;class#cashRegisterSystem#0" expanded="false" />
+            <element signature="method#statistic#0;class#cashRegisterSystem#0" expanded="false" />
+            <element signature="e#18326#18327#0" expanded="true" />
+            <element signature="e#18401#18402#0" expanded="true" />
           </folding>
         </state>
       </provider>

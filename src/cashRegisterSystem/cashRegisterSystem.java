@@ -494,6 +494,14 @@ public class cashRegisterSystem
         System.out.println("Update komplett");
         return bCorrect;
     }
+
+    /**
+     * Function: statistic
+     * @return no return value
+     *
+     * display output for the difference of the cash register inventory and the inventory.txt
+     * to see which articles were sold and how big the turnover is
+     */
     public void statistic() {
         int iNewArticle = 0;
         cashRegisterSystem invetoryData = new cashRegisterSystem();
@@ -533,7 +541,13 @@ public class cashRegisterSystem
             System.out.println("Es wurde kein Artikel verkauft");
         }
     }
-    public void OutputInventory()
+
+    /**
+     * Function: outputInventory
+     * @return no return value
+     *
+     */
+    public void outputInventory()
     {
         int iTotalProducts=0;
         for(int iCurrentInventory=0; iCurrentInventory<inventory.size();iCurrentInventory++)
