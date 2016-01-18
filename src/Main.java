@@ -19,9 +19,7 @@ public class Main {
 
 
         Netto.inventory();
-
-        boolean hardcoreaenderung;
-        hardcoreaenderung=Netto.update();
+        Netto.update();
 
     }
 }
