@@ -558,7 +558,7 @@ public class cashRegisterSystem
         }
         catch (IOException e)
         {
-            //Error Handling exit with Error 1
+            // Error Handling exit with Error 1
             System.out.println("Error" + e.getMessage());
             System.exit(1);
         }
@@ -622,6 +622,7 @@ public class cashRegisterSystem
             }
         }
         return true;
+
     }
     private int searchArticleInCart(cart ActualCart, char cBarcode[])
     {
