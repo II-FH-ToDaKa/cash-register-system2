@@ -648,12 +648,12 @@ public class cashRegisterSystem
     }
     private int searchArticleInCart(cart ActualCart, char cBarcode[])
     {
-        System.out.println(new String (cBarcode));
+        //System.out.println(new String (cBarcode));
         int iCurrentCart=0;
         while(!compare_Barcode(ActualCart.getArticle().get(iCurrentCart).getBarcode(),cBarcode))
         {
 
-            System.out.println(ActualCart.getArticle().get(iCurrentCart).getBarcode());
+            //System.out.println(ActualCart.getArticle().get(iCurrentCart).getBarcode());
             if(iCurrentCart==ActualCart.getArticle().size()-1)
             {
 
