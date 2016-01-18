@@ -207,27 +207,18 @@ public class cashRegisterSystem
     public boolean otherPrice(cart ActualCart, char cBarcode[], double dprice)
     {
         int iCurrentCart=0;
-        boolean bWrongArticle=false;
 
-        while(!compare_Barcode(ActualCart.getArticle().get(iCurrentCart).getBarcode(),cBarcode))
-        {
+        iCurrentCart=searchArticleInCart(ActualCart,cBarcode);
 
-            if(iCurrentCart==ActualCart.getArticle().size()-1)
-            {
-                bWrongArticle=true;
-                break;
-            }
-            iCurrentCart++;
-        }
-        if(!bWrongArticle)
-        {
-            ActualCart.getArticle().get(iCurrentCart).setPrice(dprice);
-            return true;
-        }
-        else
+        if(iCurrentCart==-1)
         {
             wrong_article(cBarcode);
             return false;
+        }
+        else
+        {
+            ActualCart.getArticle().get(iCurrentCart).setPrice(dprice);
+            return true;
         }
     }
 
@@ -342,42 +333,17 @@ public class cashRegisterSystem
     {
         //searchArticle in Cart
         int iCurrentCart=0;
-        boolean bWrongArticle=false;
 
-        while(!compare_Barcode(ActualCart.getArticle().get(iCurrentCart).getBarcode(),cBarcode))
-        {
+        iCurrentCart=searchArticleInCart(ActualCart,cBarcode);
 
-           if(iCurrentCart==ActualCart.getArticle().size()-1)
-            {
-
-                bWrongArticle=true;
-                break;
-            }
-            iCurrentCart++;
-        }
-
-
-        int iAmount=ActualCart.getArticle().get(iCurrentCart).getAmount();
-        //search Article in Inventory
-        int iCurrentInventory=0;
-        while(!compare_Barcode(inventory.get(iCurrentInventory).getBarcode(),cBarcode))
-        {
-            if(iCurrentInventory==ActualCart.getArticle().size()-1)
-            {
-                bWrongArticle=true;
-                break;
-            }
-            iCurrentInventory++;
-        }
-
-        if(bWrongArticle)
+        if(iCurrentCart==-1)
         {
             wrong_article(cBarcode);
         }
         else
         {
             int iDiscount=ActualCart.getiDiscount();
-
+            int iAmount=ActualCart.getArticle().get(iCurrentCart).getAmount();
             double dNormalPrice=inventory.get(iCurrentCart).getPrice();
             String sName=inventory.get(iCurrentCart).getName();
             double dNewPrice=ActualCart.getArticle().get(iCurrentCart).getPrice();
@@ -462,15 +428,15 @@ public class cashRegisterSystem
                 if(invetoryData.inventory.get(iCurrentInventoryData).getPrice()!=inventory.get(iCurrentInventory).getPrice())
                 {
                     //Price is changed
-
+                    System.out.println("Preis von "+inventory.get(iCurrentInventory).getBarcode()+" hat sich geändert");
                     //Check if price <=0
-                    bCorrect = false;
-                    inventory.get(iCurrentInventory).setPrice(invetoryData.inventory.get(iCurrentInventoryData).getPrice());
-                }
-                else
-                {
 
                 }
+                if(invetoryData.inventory.get(iCurrentInventoryData).getPrice()<=0)
+                {
+                    System.out.println("Preis von "+inventory.get(iCurrentInventory).getBarcode()+" ist kleiner gleich null");
+                    bCorrect = false;
+                };
                 if(invetoryData.inventory.get(iCurrentInventoryData).getAmount()<inventory.get(iCurrentInventory).getAmount())
                 {
                     //More Amount in Inventory as in extern Inventory
@@ -494,14 +460,6 @@ public class cashRegisterSystem
         System.out.println("Update komplett");
         return bCorrect;
     }
-
-    /**
-     * Function: statistic
-     * @return no return value
-     *
-     * display output for the difference of the cash register inventory and the inventory.txt
-     * to see which articles were sold and how big the turnover is
-     */
     public void statistic() {
         int iNewArticle = 0;
         cashRegisterSystem invetoryData = new cashRegisterSystem();
@@ -541,13 +499,7 @@ public class cashRegisterSystem
             System.out.println("Es wurde kein Artikel verkauft");
         }
     }
-
-    /**
-     * Function: outputInventory
-     * @return no return value
-     *
-     */
-    public void outputInventory()
+    public void OutputInventory()
     {
         int iTotalProducts=0;
         for(int iCurrentInventory=0; iCurrentInventory<inventory.size();iCurrentInventory++)
@@ -660,16 +612,33 @@ public class cashRegisterSystem
         }
         return null;
     }
-    private boolean compare_Barcode(char barcodeA[], char barcodeB[])
+    private boolean compare_Barcode(char cBarcodeA[], char cBarcodeB[])
     {
         for(int iBarcodeCount=0; iBarcodeCount<MAX_BARCODE_LENGTH; iBarcodeCount++)
         {
-            if(barcodeA[iBarcodeCount]!=barcodeB[iBarcodeCount])
+            if(cBarcodeA[iBarcodeCount]!=cBarcodeB[iBarcodeCount])
             {
                 return false;
             }
         }
         return true;
+    }
+    private int searchArticleInCart(cart ActualCart, char cBarcode[])
+    {
+        System.out.println(new String (cBarcode));
+        int iCurrentCart=0;
+        while(!compare_Barcode(ActualCart.getArticle().get(iCurrentCart).getBarcode(),cBarcode))
+        {
+
+            System.out.println(ActualCart.getArticle().get(iCurrentCart).getBarcode());
+            if(iCurrentCart==ActualCart.getArticle().size()-1)
+            {
+
+                return iCurrentCart;
+            }
+            iCurrentCart++;
+        }
+        return -1;
     }
 }
 
