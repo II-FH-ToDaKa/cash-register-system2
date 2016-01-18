@@ -423,6 +423,8 @@ public class cashRegisterSystem
      * after update the difference is spotted and the new item will be added to the inventory.txt
      *
      * the same will happen if you have changed the price on the cash register for some items
+     * or the name
+     * or the amount in the cash register is larger than the amount saved in the inventory.txt
      */
     public boolean update()
     {
@@ -452,7 +454,7 @@ public class cashRegisterSystem
 
                 inventory.add(new inventoryArticle(cBarcode, invetoryData.inventory.get(iCurrentInventoryData).getName(),invetoryData.inventory.get(iCurrentInventoryData).getAmount(),invetoryData.inventory.get(iCurrentInventoryData).getPrice()));
 
-                System.out.println("Artikle "+invetoryData.inventory.get(iCurrentInventoryData).getName()+" wurde hinzugefügt");
+                System.out.println("Artikel "+invetoryData.inventory.get(iCurrentInventoryData).getName()+" wurde hinzugefügt");
                 bCorrect=false;
             }
             else
