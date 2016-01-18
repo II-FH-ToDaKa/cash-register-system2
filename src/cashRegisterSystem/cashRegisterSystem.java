@@ -5,20 +5,34 @@ package cashRegisterSystem;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- * Created by karls_000 on 18.11.2015.
+ * Class: cashRegisterSystem
+ * This is the main class with all functions which are needed to operate the cash register
+ *
  */
+
 public class cashRegisterSystem
 
 {
+    /**
+     * constant: self explaining, length of the barcodes
+     */
+
     private static final int MAX_BARCODE_LENGTH=14;
+
+    /**
+     * Class: inventoryArticle
+     * this is the class to define the stock which is currently in the store
+     * will be the datatype for a list
+     * the stock is listed in a txt file asnd will have the structure like the variables in this class
+     */
     public class inventoryArticle
     {
         private char barcode[];
         private String name;
         private int amount;
         private double price;
+        private boolean isFood;
 
         public boolean isFood() {
             return isFood;
@@ -27,8 +41,6 @@ public class cashRegisterSystem
         public void setFood(boolean food) {
             isFood = food;
         }
-
-        private boolean isFood;
 
         public inventoryArticle(char barcode[], String name, int amount, double price)
         {
@@ -71,9 +83,23 @@ public class cashRegisterSystem
         }
     }
 
+    /**
+     * List: inventoryArticle
+     * this is the stocklist which every function works with
+     * it will be filled with information from the inventory.txt
+     * and at the end it will be copied again into the txt for the difference what was selled
+     */
     private List <inventoryArticle> inventory = new ArrayList<inventoryArticle>();
-    /*
-     *adds an Article to your Cart returns if it was successful
+
+    /**
+     * Function: addArticle
+     * @param cBarcode
+     * @param iAmount
+     * @param ccart
+     * @return successful if adding to the cart
+     *
+     * adds a article to the cart
+     * current problem: doesnt remove from inventory
      */
     public boolean addArticle(char[] cBarcode, int iAmount, cart ccart)
     {
@@ -88,6 +114,10 @@ public class cashRegisterSystem
             newcart.setName(tempart.getName());
             newcart.setAmount(iAmount);
             ccart.setArticle(newcart);
+            /**
+             * add to price einfügen da sonst nur article hinzugefügt wird
+             * und remove from inventory
+             */
 
             return true;
         }
@@ -99,9 +129,14 @@ public class cashRegisterSystem
 
         return false;
     }
-    /*
-    *deletes an Article from your Cart, returns if it was successful
-    */
+    /**Function: delArticle
+     * @param cBarcode
+     * @param iAmount
+     * @param ccart
+     * @return successful if removing from the cart
+     *
+     * removes an article from the cart
+     */
     boolean delArticle(char[] cBarcode, int iAmount, cart ccart)
     {
         int isizeInventory=inventory.size();
@@ -145,20 +180,32 @@ public class cashRegisterSystem
 
 
     }
-    /*
-    *give an discount to the whole cart (Prices)
-    */
+
+    /**
+     * Function: discount
+     * @param ActualCart
+     * @param iDiscount
+     * @return successful if changed discount in the cart(this affects the whole order)
+     */
     public boolean discount(cart ActualCart, int iDiscount)
     {
         ActualCart.setiDiscount(iDiscount);
         return true;
     }
-    /*
-    *give the product an individual price to an article
-    */
-    public boolean other_price(cart ActualCart, char cBarcode[], double dprice)
+
+    /**
+     * Function: otherPrice
+     * @param ActualCart
+     * @param cBarcode
+     * @param dprice
+     * @return successful if the price was changed manually, returns false if the article(barcode) isn't in the cart with
+     * an error message for the wrong article
+     *
+     * searches for the specific item in the cart, so it has to be added before
+     * after the successful found of the article the price will be changed by the given parameter
+     */
+    public boolean otherPrice(cart ActualCart, char cBarcode[], double dprice)
     {
-        //searchArticle in Cart
         int iCurrentCart=0;
         boolean bWrongArticle=false;
 
@@ -182,12 +229,21 @@ public class cashRegisterSystem
             wrong_article(cBarcode);
             return false;
         }
-
-
-
     }
 
     //add Price when scanned
+
+    /**
+     * Function: addToPrice
+     * @param ccart
+     * @param barcode
+     * @param amount
+     * @return no return value
+     *
+     * this function will be called if an article is added to the cart
+     * it adds the old price + the new article
+     * combination with add article
+     */
     public void addToPrice(cart ccart, char[] barcode, int amount)
     {
         inventoryArticle currentArticle;
@@ -202,6 +258,16 @@ public class cashRegisterSystem
         }
     }
 
+    /**
+     * Function: removeFromPrice
+     * @param ccart
+     * @param barcode
+     * @param amount
+     * @return no return value
+     *
+     * removes the price of an article from the cart
+     * combination with add article
+     */
     public void removeFromPrice(cart ccart, char[] barcode, int amount)
     {
         inventoryArticle currentArticle;
@@ -215,25 +281,40 @@ public class cashRegisterSystem
             ccart.setdFullPrice(ccart.getdFullPrice() - (currentArticle.getPrice() * amount) * ccart.TAX_NORMAL);
         }
     }
-    /*
-     * adds item to the inventory
+
+    /**
+     * Function: newItem
+     * @param cBarcode
+     * @param sName
+     * @param dPrice
+     * @param iAmount
+     * @param bisFood
+     * @return if a article was added successfully
+     *
+     * adds a new article into the inventory list
      */
-    public boolean new_item(char[] cBarcode, String sName, double dPrice,int iAmount, boolean bisFood )
+    public boolean newItem(char[] cBarcode, String sName, double dPrice,int iAmount, boolean bisFood )
     {
         inventoryArticle newArticle=new inventoryArticle(cBarcode, sName, iAmount,dPrice);
         newArticle.setFood(bisFood);
 
         inventory.add(newArticle);
+
         write_inventory() ;
-        return false;
+        return true;
     }
-    /*
-     * removes item from the inventory
+
+    /**
+     * Function: removeItem
+     * @param cBarcode
+     * @return successful if item was removed from the inventory, failed if item wasnt found
+     *
+     * remove a specific item from the inventory list
      */
-    public boolean remove_item(char[] barcode)
+    public boolean removeItem(char[] cBarcode)
     {
         inventoryArticle toBeRemoved;
-        toBeRemoved = search_Article(barcode);
+        toBeRemoved = search_Article(cBarcode);
         if(toBeRemoved != null)
         {
             inventory.remove(toBeRemoved);
@@ -246,7 +327,18 @@ public class cashRegisterSystem
         }
     }
     //Display Barcode, Name, Price, new Price, Amount (and Picture) from a Article
-    public void display_article (char cBarcode[], cart ActualCart)
+
+    /**
+     * Function: displayArticle
+     * @param cBarcode
+     * @param ActualCart
+     * @return no return value
+     *
+     * Display an specific article from  the cart
+     * shows barcode, name, price, the price with discount, amount (picture ....later)
+     *
+     */
+    public void displayArticle (char cBarcode[], cart ActualCart)
     {
         //searchArticle in Cart
         int iCurrentCart=0;
@@ -298,6 +390,13 @@ public class cashRegisterSystem
             System.out.printf("%1$.2f$\n",dNewPrice);
         }
     }
+
+    /**
+     * Function: inventory
+     * @return no return value
+     *
+     * Prints the whole inventory which is currently saved on the cash register
+     */
     public void inventory()
     {
         char cBarcode[];
@@ -314,9 +413,20 @@ public class cashRegisterSystem
             System.out.println(cBarcode+"\t"+SName+"\t"+iAmount+"\t"+dPrice);
         }
     }
+
+    /**
+     * Function: update
+     * @return successful update process
+     *
+     * this function will check differences between inventory list and inventory.txt
+     * so if you have added a new item it is currently saved on the cash register
+     * after update the difference is spotted and the new item will be added to the inventory.txt
+     *
+     * the same will happen if you have changed the price on the cash register for some items
+     */
     public boolean update()
     {
-        //Fals if any deviation
+        //False if any deviation
         boolean bCorrect=true;
         cashRegisterSystem invetoryData =new cashRegisterSystem();
 
