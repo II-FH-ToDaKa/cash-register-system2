@@ -18,7 +18,7 @@ public class cashRegisterSystem
      * constant: self explaining, length of the barcodes
      */
 
-    private static final int MAX_BARCODE_LENGTH=14;
+    private static final int MAX_BARCODE_LENGTH=13;
 
     /**
      * Class: inventoryArticle
@@ -369,14 +369,14 @@ public class cashRegisterSystem
         String SName;
         int iAmount;
         double dPrice;
-        System.out.println("Barcode\tArtikel\t\tMenge\tPreis");
+        System.out.println("Barcode\t\t\tArtikel\t\t\t\t\t\tMenge\tPreis");
         for(int iInventoryCounter=0; iInventoryCounter<inventory.size();iInventoryCounter++)
         {
             cBarcode= inventory.get(iInventoryCounter).getBarcode();
             SName = inventory.get(iInventoryCounter).getName();
             iAmount = inventory.get(iInventoryCounter).getAmount();
             dPrice =inventory.get(iInventoryCounter).getPrice();
-            System.out.println(cBarcode+"\t"+SName+"\t"+iAmount+"\t"+dPrice);
+            System.out.println(new String(cBarcode)+"\t"+SName+"\t\t"+iAmount+"\t\t"+dPrice);
         }
     }
 
@@ -398,68 +398,89 @@ public class cashRegisterSystem
         boolean bCorrect=true;
         cashRegisterSystem invetoryData =new cashRegisterSystem();
 
-        invetoryData.read_inventory();
 
-        int iCurrentInventory;
+        //Daten zum Testen
+        //Normalerweiße: invetoryData.read_inventory();
+        char[] barcode={'4','0','1','4','3','4','8','9','1','6','1','5','8'};
+        invetoryData.newItem(barcode,"BASF GLYSANTIN G48 1,5L",13.99,4,false);
+        cart KundeKarl =new cart();
+        char [] barcode2={'5','0','0','0','1','1','2','5','6','3','7','3','3'};
+        invetoryData.newItem(barcode2,"Relentless Energy Drink",1.99,3, true);
+        char [] barcode3={'4','0','6','2','4','0','0','1','1','5','4','8','3'};
+        invetoryData.newItem(barcode3,"SIERRA Tequila Silver",11.99,3, true);
+
         char cBarcode[];
+        inventoryArticle TempArticle;
+        boolean bAnythingChanged;
         //Go the each article
         for(int iCurrentInventoryData=0; iCurrentInventoryData<invetoryData.inventory.size(); iCurrentInventoryData++)
         {
             cBarcode=invetoryData.inventory.get(iCurrentInventoryData).getBarcode();
             //search the Barcode from the extern Data in the Inventory
-
-
-            for(iCurrentInventory=0; !compare_Barcode(cBarcode,inventory.get(iCurrentInventory).getBarcode())&&iCurrentInventory<inventory.size();iCurrentInventory++)
+            TempArticle=null;
+            for(int iCurrentInventory=0;iCurrentInventory<inventory.size();iCurrentInventory++)
             {
-
+                if (compare_Barcode(inventory.get(iCurrentInventory).getBarcode(), invetoryData.inventory.get(iCurrentInventoryData).getBarcode())) {
+                    //Article found
+                    TempArticle=inventory.get(iCurrentInventory);
+                }
             }
-            if(!compare_Barcode(cBarcode,inventory.get(iCurrentInventory).getBarcode()))
-            {
+            if(TempArticle==null) {
                 //Article dont exist
                 //Create new Article
-
                 inventory.add(new inventoryArticle(cBarcode, invetoryData.inventory.get(iCurrentInventoryData).getName(),invetoryData.inventory.get(iCurrentInventoryData).getAmount(),invetoryData.inventory.get(iCurrentInventoryData).getPrice()));
-
                 System.out.println("Artikel "+invetoryData.inventory.get(iCurrentInventoryData).getName()+" wurde hinzugefügt");
-                bCorrect=false;
+
             }
             else
             {
-                if(invetoryData.inventory.get(iCurrentInventoryData).getPrice()!=inventory.get(iCurrentInventory).getPrice())
+                bAnythingChanged=false;
+                if(!TempArticle.getName().equals(invetoryData.inventory.get(iCurrentInventoryData).getName()))
                 {
-                    //Price is changed
-                    System.out.println("Preis von "+inventory.get(iCurrentInventory).getBarcode()+" hat sich geändert");
-                    //Check if price <=0
-
+                    System.out.println(TempArticle.getName()+" wurde zu "+invetoryData.inventory.get(iCurrentInventoryData).getName()+" geändert");
+                    TempArticle.setName(invetoryData.inventory.get(iCurrentInventoryData).getName());
+                    bAnythingChanged=true;
                 }
-                if(invetoryData.inventory.get(iCurrentInventoryData).getPrice()<=0)
+                if(TempArticle.getAmount()!=invetoryData.inventory.get(iCurrentInventoryData).getAmount())
                 {
-                    System.out.println("Preis von "+inventory.get(iCurrentInventory).getBarcode()+" ist kleiner gleich null");
-                    bCorrect = false;
-                };
-                if(invetoryData.inventory.get(iCurrentInventoryData).getAmount()<inventory.get(iCurrentInventory).getAmount())
-                {
-                    //More Amount in Inventory as in extern Inventory
-                    bCorrect = false;
+                    System.out.println(TempArticle.getName()+"("+TempArticle.getAmount()+") sind nun "+invetoryData.inventory.get(iCurrentInventoryData).getAmount()+" auf Lager");
+                    TempArticle.setAmount(invetoryData.inventory.get(iCurrentInventoryData).getAmount());
+                    bAnythingChanged=true;
                 }
-                inventory.get(iCurrentInventory).setAmount(invetoryData.inventory.get(iCurrentInventoryData).getAmount());
-
-                if(!inventory.get(iCurrentInventory).getName().equals(invetoryData.inventory.get(iCurrentInventoryData).getName()))
+                if(TempArticle.isFood()!=invetoryData.inventory.get(iCurrentInventoryData).isFood())
                 {
-                    //The Name is changed
-
-                    bCorrect = false;
-                    inventory.get(iCurrentInventory).setName(invetoryData.inventory.get(iCurrentInventoryData).getName());
+                    if(invetoryData.inventory.get(iCurrentInventoryData).isFood())
+                    {
+                        System.out.println(TempArticle.getName()+" ist nun ein Lebensmittel");
+                    }
+                    else
+                    {
+                        System.out.println(TempArticle.getName()+" ist nun kein Lebensmittel");
+                    }
+                    TempArticle.setFood(invetoryData.inventory.get(iCurrentInventoryData).isFood());
+                    bAnythingChanged=true;
                 }
-
+                if(TempArticle.getPrice()!=invetoryData.inventory.get(iCurrentInventoryData).getPrice())
+                {
+                    System.out.println(TempArticle.getName()+"("+TempArticle.getPrice()+") kostet nun "+invetoryData.inventory.get(iCurrentInventoryData).getPrice()+"€");
+                    TempArticle.setPrice(invetoryData.inventory.get(iCurrentInventoryData).getPrice());
+                    bAnythingChanged=true;
+                }
+                if(bAnythingChanged)
+                {
+                    System.out.println("---------------------------------");
+                }
 
             }
 
+
+
         }
-        System.out.println("---------------------------------");
         System.out.println("Update komplett");
+        System.out.println("---------------------------------");
         return bCorrect;
     }
+
     public void statistic() {
         int iNewArticle = 0;
         cashRegisterSystem invetoryData = new cashRegisterSystem();
@@ -599,17 +620,18 @@ public class cashRegisterSystem
 
 
     }
-    private inventoryArticle search_Article(char barcode[])
+    private inventoryArticle search_Article(char cBarcode[])
     {
 
         for(int iArticleCount=0;iArticleCount<inventory.size();iArticleCount++)
         {
-            if(compare_Barcode(barcode, inventory.get(iArticleCount).barcode))
+            if(compare_Barcode(cBarcode, inventory.get(iArticleCount).getBarcode()))
             {
                 return inventory.get(iArticleCount);
             }
 
         }
+        //Return null if article dont exist
         return null;
     }
     private boolean compare_Barcode(char cBarcodeA[], char cBarcodeB[])
