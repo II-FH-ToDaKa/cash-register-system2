@@ -391,6 +391,7 @@ public class cashRegisterSystem
      * the same will happen if you have changed the price on the cash register for some items
      * or the name
      * or the amount in the cash register is larger than the amount saved in the inventory.txt
+     * or the specification if an article is a food or not
      */
     public boolean update()
     {
@@ -398,7 +399,9 @@ public class cashRegisterSystem
         boolean bCorrect=true;
         cashRegisterSystem invetoryData =new cashRegisterSystem();
 
-
+        /*
+         *          DIGGER DATEN ZUM TESTEN KOMMEN IN DIE UNIT TESTS
+         */
         //Daten zum Testen
         //Normalerweiße: invetoryData.read_inventory();
         char[] barcode={'4','0','1','4','3','4','8','9','1','6','1','5','8'};
@@ -481,6 +484,14 @@ public class cashRegisterSystem
         return bCorrect;
     }
 
+    /**
+     * Funtion: statistic
+     * @return no return value
+     *
+     * this functions operates similar to updates but instead of only checking differences which item wa added
+     * this will che3ck the amount difference between the inventory and the inventory.txt
+     * to calculate the turnover with the sold products
+     */
     public void statistic() {
         int iNewArticle = 0;
         cashRegisterSystem invetoryData = new cashRegisterSystem();
@@ -520,7 +531,15 @@ public class cashRegisterSystem
             System.out.println("Es wurde kein Artikel verkauft");
         }
     }
-    public void OutputInventory()
+
+    /**
+     * Funtion: outputInventory
+     * @return no return value
+     *
+     * this will disply the current stock which is registerd in the inventory list
+     *
+     */
+    public void outputInventory()
     {
         int iTotalProducts=0;
         for(int iCurrentInventory=0; iCurrentInventory<inventory.size();iCurrentInventory++)
@@ -547,12 +566,26 @@ public class cashRegisterSystem
 
     }
 
+    /**
+     * Function wrong_article
+     * @param barcode
+     *
+     * simple output to display that you tried a wrong
+     */
     public void wrong_article(char[] barcode)
     {
         System.out.println(new String(barcode)+" nicht vorhanden!");
     }
 
-    //Helpfunction that reads the inventory file and puts it in a list for easier use
+
+
+    /**
+     * Function: read_inventory
+     * @return no return value
+     *
+     * this function reads the inventory.txr and copies the content into the inventory list
+     * mainly used at the3 start of the cash register system
+     */
     private void read_inventory()
     {
         try
@@ -586,6 +619,14 @@ public class cashRegisterSystem
     }
 
     //Helpfunction that puts the list in the file
+
+    /**
+     * Function: write_inventory
+     * @return no return value
+     *
+     * this function is the opposite of read_invetory
+     * it will put the altered stock from the inventory list into the inventory.txt
+     */
     private void write_inventory()
     {
         try
