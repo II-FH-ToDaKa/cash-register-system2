@@ -661,6 +661,14 @@ public class cashRegisterSystem
 
 
     }
+
+    /**
+     * Function: search_Article
+     * @param cBarcode
+     * @return a specific article from the inventory list with the help of the barcode
+     * will return a NULL if it didnt work/ didnt found the article
+     *
+     */
     private inventoryArticle search_Article(char cBarcode[])
     {
 
@@ -675,6 +683,17 @@ public class cashRegisterSystem
         //Return null if article dont exist
         return null;
     }
+
+    /**
+     * FUnction: compare_Barcode
+     * @param cBarcodeA
+     * @param cBarcodeB
+     * @return successful if both barcodes are similar
+     *
+     * at some point you need to compare to barcodes this function will allow it
+     * pretty needed in some functions
+     *
+     */
     private boolean compare_Barcode(char cBarcodeA[], char cBarcodeB[])
     {
         for(int iBarcodeCount=0; iBarcodeCount<MAX_BARCODE_LENGTH; iBarcodeCount++)
@@ -687,6 +706,15 @@ public class cashRegisterSystem
         return true;
 
     }
+
+    /**
+     * Function: searchArticleInCart
+     * @param ActualCart
+     * @param cBarcode
+     * @return the postion in the cart at which the searched item is
+     *
+     *
+     */
     private int searchArticleInCart(cart ActualCart, char cBarcode[])
     {
         //System.out.println(new String (cBarcode));
