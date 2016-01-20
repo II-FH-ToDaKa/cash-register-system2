@@ -117,6 +117,19 @@ public class Main {
                     //addtoprice
                     crsREWE.displayArticle(cBarcode,caTempCustomer);
                 }
+                else if(menue==2)
+                {
+                    System.out.println("Barcode:");
+                    cBarcode=sArticle.next().toCharArray();
+                    dPrice=Double.parseDouble(sArticle.next());
+                    crsREWE.otherPrice(caTempCustomer,cBarcode,dPrice);
+                }
+                else if(menue==2)
+                {
+                    System.out.println("Rabatt, in Prozent:");
+                    iAmount=Integer.parseInt(sArticle.next());
+                    crsREWE.discount(caTempCustomer,iAmount);
+                }
                 else if(menue==0)
                 {
                 }
