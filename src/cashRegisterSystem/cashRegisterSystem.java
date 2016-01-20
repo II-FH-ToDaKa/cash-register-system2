@@ -586,7 +586,7 @@ public class cashRegisterSystem
      * this function reads the inventory.txr and copies the content into the inventory list
      * mainly used at the3 start of the cash register system
      */
-    private void readInventory()
+    private boolean readInventory()
     {
         try
         {
@@ -596,7 +596,7 @@ public class cashRegisterSystem
             String row = br.readLine();
             while (row != null)
             {
-                String articleinfo[] = row.split("|");
+                String articleinfo[] = row.split(":");
 
                 char barcode[] = articleinfo[0].toCharArray();
                 String name = articleinfo[1];
@@ -609,12 +609,13 @@ public class cashRegisterSystem
             }
 
             br.close();
+            return true;
         }
         catch (IOException e)
         {
-            // Error Handling exit with Error 1
             System.out.println("Error" + e.getMessage());
-            System.exit(1);
+            System.out.println("Error reading File");
+            return false;
         }
     }
 
@@ -627,36 +628,31 @@ public class cashRegisterSystem
      * this function is the opposite of read_invetory
      * it will put the altered stock from the inventory list into the inventory.txt
      */
-    private void writeInventory()
+    private boolean writeInventory()
     {
         try
         {
-            File file = new File("inventory.txt");
-            if(file.delete()) {}
-            else
-            {
-                System.out.println("Delete operation is failed.");
-            }
-
             FileWriter writer = new FileWriter("inventory.txt");
 
 
             for(int counter = 0; counter<inventory.size(); counter++)
             {
-                writer.write(inventory.get(counter)+"|"
-                        +inventory.get(counter).getName()+"|"
-                        +String.valueOf(inventory.get(counter).getAmount())+"|"
-                        +String.valueOf(inventory.get(counter).getPrice())+"|"
-                        +String.valueOf(inventory.get(counter).isFood()));
+                writer.write(inventory.get(counter).getBarcode());
+                writer.append(":"
+                        +inventory.get(counter).getName()+":"
+                        +String.valueOf(inventory.get(counter).getAmount())+":"
+                        +String.valueOf(inventory.get(counter).getPrice())+":"
+                        +String.valueOf(inventory.get(counter).isFood())+'\n');
             }
 
             writer.close();
+            return true;
         }
         catch(IOException e)
         {
-            //Error Handling exit with Error 2
             System.out.println("Error" + e.getMessage());
-            System.exit(2);
+            System.out.println("Error writing File");
+            return false;
         }
 
 
