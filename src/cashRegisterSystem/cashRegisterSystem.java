@@ -114,6 +114,7 @@ public class cashRegisterSystem
             newcart.setName(tempart.getName());
             newcart.setAmount(iAmount);
             ccart.setArticle(newcart);
+            newcart.setPrice(tempart.getPrice());
             /**
              * add to price einfügen da sonst nur article hinzugefügt wird
              * und remove from inventory
@@ -398,20 +399,7 @@ public class cashRegisterSystem
         //False if any deviation
         boolean bCorrect=true;
         cashRegisterSystem invetoryData =new cashRegisterSystem();
-
-        /*
-         *          DIGGER DATEN ZUM TESTEN KOMMEN IN DIE UNIT TESTS
-         */
-        //Daten zum Testen
-        //Normalerweiße: invetoryData.readInventory();
-        char[] barcode={'4','0','1','4','3','4','8','9','1','6','1','5','8'};
-        invetoryData.newItem(barcode,"BASF GLYSANTIN G48 1,5L",13.99,4,false);
-        cart KundeKarl =new cart();
-        char [] barcode2={'5','0','0','0','1','1','2','5','6','3','7','3','3'};
-        invetoryData.newItem(barcode2,"Relentless Energy Drink",1.99,3, true);
-        char [] barcode3={'4','0','6','2','4','0','0','1','1','5','4','8','3'};
-        invetoryData.newItem(barcode3,"SIERRA Tequila Silver",11.99,3, true);
-
+        invetoryData.readInventory();
         char cBarcode[];
         inventoryArticle TempArticle;
         boolean bAnythingChanged;
