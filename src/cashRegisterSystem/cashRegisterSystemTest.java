@@ -165,6 +165,7 @@ public class cashRegisterSystemTest {
         cart myCart = new cart();
 
         CRS.newItem(barcode.toCharArray(), articleName, price, amount, isFood);
+        CRS.addArticle(barcode.toCharArray(),amount, myCart);
         CRS.displayArticle(barcode.toCharArray(), myCart);
 
         //kann nur manuel überprüft werden
@@ -172,7 +173,19 @@ public class cashRegisterSystemTest {
 
     @Test
     public void testInventory() throws Exception {
+        String barcode = "12345678901234";
+        String articleName = "Apfel";
+        double price = 0.99;
+        int amount = 1;
+        boolean isFood = true;
 
+        cashRegisterSystem CRS = new cashRegisterSystem();
+        cart myCart = new cart();
+
+        CRS.newItem(barcode.toCharArray(), articleName, price, amount, isFood);
+        CRS.inventory();
+
+        //kann nur manuel überprüft werden
     }
 
     @Test

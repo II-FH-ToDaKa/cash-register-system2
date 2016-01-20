@@ -718,6 +718,7 @@ public class cashRegisterSystem
     private int searchArticleInCart(cart ActualCart, char cBarcode[])
     {
         //System.out.println(new String (cBarcode));
+        /*
         int iCurrentCart=0;
         while(!compareBarcode(ActualCart.getArticle().get(iCurrentCart).getBarcode(),cBarcode))
         {
@@ -731,6 +732,17 @@ public class cashRegisterSystem
             iCurrentCart++;
         }
         return -1;
+        */
+
+        for(int iCounter = 0; iCounter<ActualCart.getArticle().size(); iCounter++)
+        {
+            if(compareBarcode(ActualCart.getArticle().get(iCounter).getBarcode(), cBarcode))
+            {
+                return iCounter;
+            }
+        }
+        return -1;
+
     }
 }
 
