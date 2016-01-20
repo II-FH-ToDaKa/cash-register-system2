@@ -1,5 +1,7 @@
 package cashRegisterSystem;
 
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
@@ -7,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class cashRegisterSystemTest {
 
-    @org.junit.Test
+    @Test
     public void testAddArticle() throws Exception {
         boolean returnValue = true;
         String barcode = "12345678901234";
@@ -31,7 +33,7 @@ public class cashRegisterSystemTest {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testDelArticle() throws Exception {
         String barcode = "12345678901234";
         String articleName = "Apfel";
@@ -52,17 +54,17 @@ public class cashRegisterSystemTest {
         assertEquals(0, myCart.getArticle().size()); //should be 0
     }
 
-    @org.junit.Test
+    @Test
     public void testDiscount() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testOtherPrice() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testAddToPrice() throws Exception {
         String barcode1 = "12345678901234";
         String barcode2 = "98765432109876";
@@ -89,7 +91,7 @@ public class cashRegisterSystemTest {
         assertEquals(priceNotFood, myCart2.getdFullPrice(), 0.001);
     }
 
-    @org.junit.Test
+    @Test
     public void testRemoveFromPrice() throws Exception {
         String barcode1 = "12345678901234";
         String barcode2 = "98765432109876";
@@ -118,7 +120,7 @@ public class cashRegisterSystemTest {
         assertEquals(endPrice, myCart2.getdFullPrice(), 0.001);
     }
 
-    @org.junit.Test
+    @Test
     public void testNewItem() throws Exception {
         String barcode = "12345678901234";
         String articleName = "Apfel";
@@ -130,40 +132,67 @@ public class cashRegisterSystemTest {
 
         CRS.newItem(barcode.toCharArray(), articleName, price, amount, isFood);
         CRS.inventory();
+        //kann nur manuel überprüft werden da die Inventory Liste private ist
     }
 
-    @org.junit.Test
+    @Test
     public void testRemoveItem() throws Exception {
+        String barcode = "12345678901234";
+        String articleName = "Apfel";
+        double price = 0.99;
+        int amount = 1;
+        boolean isFood = true;
 
+        cashRegisterSystem CRS = new cashRegisterSystem();
+
+        CRS.newItem(barcode.toCharArray(), articleName, price, amount, isFood);
+        CRS.inventory();
+
+        CRS.removeItem(barcode.toCharArray());
+        CRS.inventory();
+        //kann nur manuel überprüft werden da die Inventory Liste private ist
     }
 
-    @org.junit.Test
+    @Test
     public void testDisplayArticle() throws Exception {
+        String barcode = "12345678901234";
+        String articleName = "Apfel";
+        double price = 0.99;
+        int amount = 1;
+        boolean isFood = true;
 
+        cashRegisterSystem CRS = new cashRegisterSystem();
+        cart myCart = new cart();
+
+        CRS.newItem(barcode.toCharArray(), articleName, price, amount, isFood);
+        CRS.displayArticle(barcode.toCharArray(), myCart);
+
+        //kann nur manuel überprüft werden
     }
 
-    @org.junit.Test
+    @Test
     public void testInventory() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testUpdate() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testStatistic() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testOutputInventory() throws Exception {
 
     }
 
-    @org.junit.Test
-    public void testWrong_article() throws Exception {
+    @Test
+    public void testWrongArticle() throws Exception {
 
     }
+
 }

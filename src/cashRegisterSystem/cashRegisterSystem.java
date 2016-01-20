@@ -105,7 +105,7 @@ public class cashRegisterSystem
     {
         cart.article newcart=new cart.article(cBarcode,"",iAmount,iAmount);
         inventoryArticle tempart;
-        tempart=search_Article(cBarcode);
+        tempart= searchArticle(cBarcode);
 
         if(tempart!=null)
         {
@@ -146,7 +146,7 @@ public class cashRegisterSystem
 
         for (int i = 0; i < isizeInventory; i++)
         {
-            if (compare_Barcode(cBarcode, alList.get(i).getBarcode())) //find the article number in the cart
+            if (compareBarcode(cBarcode, alList.get(i).getBarcode())) //find the article number in the cart
             {
                 isearchArticle=i;
                 break;
@@ -212,7 +212,7 @@ public class cashRegisterSystem
 
         if(iCurrentCart==-1)
         {
-            wrong_article(cBarcode);
+            wrongArticle(cBarcode);
             return false;
         }
         else
@@ -238,7 +238,7 @@ public class cashRegisterSystem
     public void addToPrice(cart ccart, char[] barcode, int amount)
     {
         inventoryArticle currentArticle;
-        currentArticle = search_Article(barcode);
+        currentArticle = searchArticle(barcode);
         if(currentArticle.isFood())
         {
             ccart.setdFullPrice(ccart.getdFullPrice() + (currentArticle.getPrice() * amount) * ccart.TAX_FOOD);
@@ -262,7 +262,7 @@ public class cashRegisterSystem
     public void removeFromPrice(cart ccart, char[] barcode, int amount)
     {
         inventoryArticle currentArticle;
-        currentArticle = search_Article(barcode);
+        currentArticle = searchArticle(barcode);
         if(currentArticle.isFood())
         {
             ccart.setdFullPrice(ccart.getdFullPrice() - (currentArticle.getPrice() * amount) * ccart.TAX_FOOD);
@@ -291,7 +291,7 @@ public class cashRegisterSystem
 
         inventory.add(newArticle);
 
-        write_inventory() ;
+        writeInventory() ;
         return true;
     }
 
@@ -305,11 +305,11 @@ public class cashRegisterSystem
     public boolean removeItem(char[] cBarcode)
     {
         inventoryArticle toBeRemoved;
-        toBeRemoved = search_Article(cBarcode);
+        toBeRemoved = searchArticle(cBarcode);
         if(toBeRemoved != null)
         {
             inventory.remove(toBeRemoved);
-            write_inventory();
+            writeInventory();
             return true;
         }
         else
@@ -338,7 +338,7 @@ public class cashRegisterSystem
 
         if(iCurrentCart==-1)
         {
-            wrong_article(cBarcode);
+            wrongArticle(cBarcode);
         }
         else
         {
@@ -403,7 +403,7 @@ public class cashRegisterSystem
          *          DIGGER DATEN ZUM TESTEN KOMMEN IN DIE UNIT TESTS
          */
         //Daten zum Testen
-        //Normalerweiße: invetoryData.read_inventory();
+        //Normalerweiße: invetoryData.readInventory();
         char[] barcode={'4','0','1','4','3','4','8','9','1','6','1','5','8'};
         invetoryData.newItem(barcode,"BASF GLYSANTIN G48 1,5L",13.99,4,false);
         cart KundeKarl =new cart();
@@ -423,7 +423,7 @@ public class cashRegisterSystem
             TempArticle=null;
             for(int iCurrentInventory=0;iCurrentInventory<inventory.size();iCurrentInventory++)
             {
-                if (compare_Barcode(inventory.get(iCurrentInventory).getBarcode(), invetoryData.inventory.get(iCurrentInventoryData).getBarcode())) {
+                if (compareBarcode(inventory.get(iCurrentInventory).getBarcode(), invetoryData.inventory.get(iCurrentInventoryData).getBarcode())) {
                     //Article found
                     TempArticle=inventory.get(iCurrentInventory);
                 }
@@ -495,7 +495,7 @@ public class cashRegisterSystem
     public void statistic() {
         int iNewArticle = 0;
         cashRegisterSystem invetoryData = new cashRegisterSystem();
-        invetoryData.read_inventory();
+        invetoryData.readInventory();
 
         boolean bTableHeader = false;
         int iAmountDifference;
@@ -504,7 +504,7 @@ public class cashRegisterSystem
         for (int iCurrentInventory = 0; inventory.size() > iCurrentInventory; iCurrentInventory++) {
             //search in extern Data
             for (int iCurrrentInventoryData = 0; invetoryData.inventory.size() > iCurrrentInventoryData; iCurrrentInventoryData++) {
-                if (compare_Barcode(invetoryData.inventory.get(iCurrrentInventoryData).getBarcode(), inventory.get(iCurrentInventory).getBarcode())) {
+                if (compareBarcode(invetoryData.inventory.get(iCurrrentInventoryData).getBarcode(), inventory.get(iCurrentInventory).getBarcode())) {
                     if (invetoryData.inventory.get(iCurrrentInventoryData).getAmount() > inventory.get(iCurrentInventory).getAmount())
 
                     {
@@ -567,12 +567,12 @@ public class cashRegisterSystem
     }
 
     /**
-     * Function wrong_article
+     * Function wrongArticle
      * @param barcode
      *
      * simple output to display that you tried a wrong
      */
-    public void wrong_article(char[] barcode)
+    public void wrongArticle(char[] barcode)
     {
         System.out.println(new String(barcode)+" nicht vorhanden!");
     }
@@ -580,13 +580,13 @@ public class cashRegisterSystem
 
 
     /**
-     * Function: read_inventory
+     * Function: readInventory
      * @return no return value
      *
      * this function reads the inventory.txr and copies the content into the inventory list
      * mainly used at the3 start of the cash register system
      */
-    private void read_inventory()
+    private void readInventory()
     {
         try
         {
@@ -621,13 +621,13 @@ public class cashRegisterSystem
     //Helpfunction that puts the list in the file
 
     /**
-     * Function: write_inventory
+     * Function: writeInventory
      * @return no return value
      *
      * this function is the opposite of read_invetory
      * it will put the altered stock from the inventory list into the inventory.txt
      */
-    private void write_inventory()
+    private void writeInventory()
     {
         try
         {
@@ -663,18 +663,18 @@ public class cashRegisterSystem
     }
 
     /**
-     * Function: search_Article
+     * Function: searchArticle
      * @param cBarcode
      * @return a specific article from the inventory list with the help of the barcode
      * will return a NULL if it didnt work/ didnt found the article
      *
      */
-    private inventoryArticle search_Article(char cBarcode[])
+    private inventoryArticle searchArticle(char cBarcode[])
     {
 
         for(int iArticleCount=0;iArticleCount<inventory.size();iArticleCount++)
         {
-            if(compare_Barcode(cBarcode, inventory.get(iArticleCount).getBarcode()))
+            if(compareBarcode(cBarcode, inventory.get(iArticleCount).getBarcode()))
             {
                 return inventory.get(iArticleCount);
             }
@@ -685,7 +685,7 @@ public class cashRegisterSystem
     }
 
     /**
-     * FUnction: compare_Barcode
+     * FUnction: compareBarcode
      * @param cBarcodeA
      * @param cBarcodeB
      * @return successful if both barcodes are similar
@@ -694,7 +694,7 @@ public class cashRegisterSystem
      * pretty needed in some functions
      *
      */
-    private boolean compare_Barcode(char cBarcodeA[], char cBarcodeB[])
+    private boolean compareBarcode(char cBarcodeA[], char cBarcodeB[])
     {
         for(int iBarcodeCount=0; iBarcodeCount<MAX_BARCODE_LENGTH; iBarcodeCount++)
         {
@@ -719,7 +719,7 @@ public class cashRegisterSystem
     {
         //System.out.println(new String (cBarcode));
         int iCurrentCart=0;
-        while(!compare_Barcode(ActualCart.getArticle().get(iCurrentCart).getBarcode(),cBarcode))
+        while(!compareBarcode(ActualCart.getArticle().get(iCurrentCart).getBarcode(),cBarcode))
         {
 
             //System.out.println(ActualCart.getArticle().get(iCurrentCart).getBarcode());
