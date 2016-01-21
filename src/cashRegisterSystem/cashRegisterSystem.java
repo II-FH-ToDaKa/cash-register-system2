@@ -301,7 +301,6 @@ public class cashRegisterSystem
 
         inventory.add(newArticle);
 
-        writeInventory() ;
         return true;
     }
 
