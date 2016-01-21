@@ -410,28 +410,6 @@ public class cashRegisterSystem
         System.out.println("--------------------------------");
     }
 
-    /**
-     * Function: inventory
-     * @return no return value
-     *
-     * Prints the whole inventory which is currently saved on the cash register
-     */
-    public void inventory()
-    {
-        char cBarcode[];
-        String SName;
-        int iAmount;
-        double dPrice;
-        System.out.println("Barcode\t\t\tArtikel\t\t\t\t\t\tMenge\tPreis");
-        for(int iInventoryCounter=0; iInventoryCounter<inventory.size();iInventoryCounter++)
-        {
-            cBarcode= inventory.get(iInventoryCounter).getBarcode();
-            SName = inventory.get(iInventoryCounter).getName();
-            iAmount = inventory.get(iInventoryCounter).getAmount();
-            dPrice =inventory.get(iInventoryCounter).getPrice();
-            System.out.println(new String(cBarcode)+"\t"+SName+"\t\t"+iAmount+"\t\t"+dPrice);
-        }
-    }
 
     /**
      * Function: update
@@ -571,10 +549,6 @@ public class cashRegisterSystem
             System.out.println("Es wurde kein Artikel verkauft");
         }
     }
-    public boolean save()
-    {
-        return writeInventory();
-    }
     /**
      * Funtion: outputInventory
      * @return no return value
@@ -671,7 +645,7 @@ public class cashRegisterSystem
      * this function is the opposite of read_invetory
      * it will put the altered stock from the inventory list into the inventory.txt
      */
-    private boolean writeInventory()
+    public boolean writeInventory()
     {
         try
         {

@@ -131,7 +131,7 @@ public class cashRegisterSystemTest {
         cashRegisterSystem CRS = new cashRegisterSystem();
 
         CRS.newItem(barcode.toCharArray(), articleName, price, amount, isFood);
-        CRS.inventory();
+        CRS.outputInventory();
         //kann nur manuel überprüft werden da die Inventory Liste private ist
     }
 
@@ -146,10 +146,10 @@ public class cashRegisterSystemTest {
         cashRegisterSystem CRS = new cashRegisterSystem();
 
         CRS.newItem(barcode.toCharArray(), articleName, price, amount, isFood);
-        CRS.inventory();
+        CRS.outputInventory();
 
         CRS.removeItem(barcode.toCharArray());
-        CRS.inventory();
+        CRS.outputInventory();
         //kann nur manuel überprüft werden da die Inventory Liste private ist
     }
 
@@ -183,7 +183,7 @@ public class cashRegisterSystemTest {
         cart myCart = new cart();
 
         CRS.newItem(barcode.toCharArray(), articleName, price, amount, isFood);
-        CRS.inventory();
+        CRS.outputInventory();
 
         //kann nur manuel überprüft werden
     }

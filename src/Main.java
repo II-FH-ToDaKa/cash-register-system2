@@ -82,7 +82,7 @@ public class Main {
                 }
                 else if(menue==5)
                 {
-                    crsREWE.inventory();
+                    crsREWE.outputInventory();
                 }
                 else if(menue==6)
                 {
@@ -94,7 +94,7 @@ public class Main {
                 }
                 else if(menue==8)
                 {
-                    if(crsREWE.save())
+                    if(crsREWE.writeInventory())
                     {
                         System.out.println("Erfolgreich gespeichert");
                     }
