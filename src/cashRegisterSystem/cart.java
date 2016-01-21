@@ -4,10 +4,11 @@ import java.util.List;
 
 /**
  * Class: cart
- *
+ * @author Karl
  * this is our cart which will be the cart of the customer
- * here are all informations saved which are connected with the items the customer ordered
- *
+ * here are all informations saved which are connected with the items the customer ordered.
+ * Here are the length of the barcode, and the taxes for the price calculation
+ * also the cartlist which is filled with the articles the customer buyed
  *
  * */
 
