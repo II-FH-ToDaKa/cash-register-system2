@@ -2,14 +2,19 @@ package cashRegisterSystem;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Created by karls_000 on 18.11.2015.
- */
+/**
+ * Class: cart
+ *
+ * this is our cart which will be the cart of the customer
+ * here are all informations saved which are connected with the items the customer ordered
+ *
+ *
+ * */
 
 
 public class cart
 {
-    public static final int MAX_CHAR=14;
+    public static final int MAX_CHAR=13;
     public static final double TAX_NORMAL=1.19;
     public static final double TAX_FOOD=1.07;
 

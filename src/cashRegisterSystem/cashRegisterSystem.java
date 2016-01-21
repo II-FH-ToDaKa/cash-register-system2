@@ -93,6 +93,7 @@ public class cashRegisterSystem
 
     /**
      * Function: addArticle
+     * @author Karl
      * @param cBarcode
      * @param iAmount
      * @param ccart
@@ -131,6 +132,7 @@ public class cashRegisterSystem
         return false;
     }
     /**Function: delArticle
+     * @author Karl
      * @param cBarcode
      * @param iAmount
      * @param ccart
@@ -184,6 +186,7 @@ public class cashRegisterSystem
 
     /**
      * Function: discount
+     * @author Daniel
      * @param ActualCart
      * @param iDiscount
      * @return successful if changed discount in the cart(this affects the whole order)
@@ -196,6 +199,7 @@ public class cashRegisterSystem
 
     /**
      * Function: otherPrice
+     * @author Daniel
      * @param ActualCart
      * @param cBarcode
      * @param dprice
@@ -227,6 +231,7 @@ public class cashRegisterSystem
 
     /**
      * Function: addToPrice
+     * @author Tobias
      * @param ccart
      * @param barcode
      * @param amount
@@ -252,6 +257,7 @@ public class cashRegisterSystem
 
     /**
      * Function: removeFromPrice
+     * @author Tobias
      * @param ccart
      * @param barcode
      * @param amount
@@ -476,7 +482,7 @@ public class cashRegisterSystem
      * Funtion: statistic
      * @return no return value
      *
-     * this functions operates similar to updates but instead of only checking differences which item wa added
+     * this function operates similar to updates but instead of only checking differences which item wa added
      * this will che3ck the amount difference between the inventory and the inventory.txt
      * to calculate the turnover with the sold products
      */
@@ -607,7 +613,7 @@ public class cashRegisterSystem
         }
     }
 
-    //Helpfunction that puts the list in the file
+
 
     /**
      * Function: writeInventory
