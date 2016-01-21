@@ -236,25 +236,25 @@ public class cashRegisterSystem
      * Function: addToPrice
      * @author Tobias
      * @param ccart
-     * @param barcode
-     * @param amount
+     * @param cBarcode
+     * @param iAmount
      * @return no return value
      *
      * this function will be called if an article is added to the cart
      * it adds the old price + the new article
      * combination with add article
      */
-    public void addToPrice(cart ccart, char[] barcode, int amount)
+    public void addToPrice(cart ccart, char[] cBarcode, int iAmount)
     {
         inventoryArticle currentArticle;
-        currentArticle = searchArticle(barcode);
+        currentArticle = searchArticle(cBarcode);
         if(currentArticle.isFood())
         {
-            ccart.setdFullPrice(ccart.getdFullPrice() + (currentArticle.getPrice() * amount) * ccart.TAX_FOOD);
+            ccart.setdFullPrice(ccart.getdFullPrice() + (currentArticle.getPrice() * iAmount) * ccart.TAX_FOOD);
         }
         else
         {
-            ccart.setdFullPrice(ccart.getdFullPrice() + (currentArticle.getPrice() * amount) * ccart.TAX_NORMAL);
+            ccart.setdFullPrice(ccart.getdFullPrice() + (currentArticle.getPrice() * iAmount) * ccart.TAX_NORMAL);
         }
     }
 

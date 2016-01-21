@@ -2,9 +2,15 @@ package cashRegisterSystem;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * Created by karls_000 on 18.11.2015.
- */
+/**
+ * Class: cart
+ * @author Karl
+ * this is our cart which will be the cart of the customer
+ * here are all informations saved which are connected with the items the customer ordered.
+ * Here are the length of the barcode, and the taxes for the price calculation
+ * also the cartlist which is filled with the articles the customer buyed
+ *
+ * */
 
 
 public class cart

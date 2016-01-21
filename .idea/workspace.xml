@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="615d7f40-999a-4f13-8c69-064c4b956668" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" afterPath="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java" afterPath="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java" />
     </list>
     <ignored path="cash-register-system.iws" />
@@ -27,23 +26,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="cart.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cart.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29023746">
-              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+            <state vertical-scroll-proportion="-11.5">
+              <caret line="80" column="32" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="32" />
               <folding>
-                <element signature="e#478#487#0" expanded="true" />
+                <element signature="e#642#651#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cashRegisterSystem.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cashRegisterSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-194.5625">
-              <caret line="305" column="27" selection-start-line="305" selection-start-column="27" selection-end-line="305" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.4126697">
+              <caret line="236" column="16" selection-start-line="236" selection-start-column="16" selection-end-line="236" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -85,8 +84,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java" />
         <option value="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" />
+        <option value="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java" />
       </list>
     </option>
   </component>
@@ -533,7 +532,7 @@
       <workItem from="1453138782348" duration="344000" />
       <workItem from="1453139173437" duration="9893000" />
       <workItem from="1453199784066" duration="2430000" />
-      <workItem from="1453372929182" duration="1309000" />
+      <workItem from="1453372929182" duration="3706000" />
     </task>
     <task id="LOCAL-00001" summary="added a whole bunch of comments and fixed some spelling error in the function where function were written like some_function which isnt coherent with the java codestyle">
       <created>1453120791711</created>
@@ -571,11 +570,23 @@
       <option name="project" value="LOCAL" />
       <updated>1453201910010</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added more comments">
+      <created>1453374289628</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1453374289628</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fixes">
+      <created>1453379246309</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1453379246309</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28933000" />
+    <option name="totallyTimeSpent" value="31330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="45" width="2182" height="1406" extended-state="6" />
@@ -584,6 +595,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25092593" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.48828697" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.072222225" sideWeight="0.511713" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -594,7 +606,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.48828697" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -623,7 +634,8 @@
     <MESSAGE value="minor changes in comments" />
     <MESSAGE value="Update function(fix and Test)" />
     <MESSAGE value="added more comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more comments" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -641,7 +653,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
           <folding>
-            <element signature="e#478#487#0" expanded="true" />
+            <element signature="e#642#651#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -675,7 +687,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
           <folding>
-            <element signature="e#478#487#0" expanded="true" />
+            <element signature="e#642#651#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -709,7 +721,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
           <folding>
-            <element signature="e#478#487#0" expanded="true" />
+            <element signature="e#642#651#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -735,7 +747,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#478#487#0" expanded="true" />
+            <element signature="e#642#651#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -753,7 +765,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
           <folding>
-            <element signature="e#478#487#0" expanded="true" />
+            <element signature="e#642#651#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -779,7 +791,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding>
-            <element signature="e#478#487#0" expanded="true" />
+            <element signature="e#642#651#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -815,21 +827,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java">
+    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-194.5625">
-          <caret line="305" column="27" selection-start-line="305" selection-start-column="27" selection-end-line="305" selection-end-column="27" />
-          <folding />
+        <state vertical-scroll-proportion="-11.5">
+          <caret line="80" column="32" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="32" />
+          <folding>
+            <element signature="e#642#651#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
+    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29023746">
-          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding>
-            <element signature="e#478#487#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.4126697">
+          <caret line="236" column="16" selection-start-line="236" selection-start-column="16" selection-end-line="236" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
