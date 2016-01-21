@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="615d7f40-999a-4f13-8c69-064c4b956668" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" afterPath="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java" afterPath="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java" />
     </list>
     <ignored path="cash-register-system.iws" />
@@ -42,8 +41,8 @@
       <file leaf-file-name="cashRegisterSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73122174">
-              <caret line="252" column="9" selection-start-line="252" selection-start-column="9" selection-end-line="252" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.4126697">
+              <caret line="236" column="16" selection-start-line="236" selection-start-column="16" selection-end-line="236" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -533,7 +532,7 @@
       <workItem from="1453138782348" duration="344000" />
       <workItem from="1453139173437" duration="9893000" />
       <workItem from="1453199784066" duration="2430000" />
-      <workItem from="1453372929182" duration="3509000" />
+      <workItem from="1453372929182" duration="3706000" />
     </task>
     <task id="LOCAL-00001" summary="added a whole bunch of comments and fixed some spelling error in the function where function were written like some_function which isnt coherent with the java codestyle">
       <created>1453120791711</created>
@@ -577,11 +576,17 @@
       <option name="project" value="LOCAL" />
       <updated>1453374289628</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fixes">
+      <created>1453379246309</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1453379246309</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31133000" />
+    <option name="totallyTimeSpent" value="31330000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="45" width="2182" height="1406" extended-state="6" />
@@ -629,7 +634,8 @@
     <MESSAGE value="minor changes in comments" />
     <MESSAGE value="Update function(fix and Test)" />
     <MESSAGE value="added more comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="added more comments" />
+    <MESSAGE value="fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -833,8 +839,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73122174">
-          <caret line="252" column="9" selection-start-line="252" selection-start-column="9" selection-end-line="252" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.4126697">
+          <caret line="236" column="16" selection-start-line="236" selection-start-column="16" selection-end-line="236" selection-end-column="16" />
           <folding />
         </state>
       </provider>
