@@ -571,7 +571,10 @@ public class cashRegisterSystem
             System.out.println("Es wurde kein Artikel verkauft");
         }
     }
-
+    public boolean save()
+    {
+        return writeInventory();
+    }
     /**
      * Funtion: outputInventory
      * @return no return value
@@ -579,10 +582,7 @@ public class cashRegisterSystem
      * this will disply the current stock which is registerd in the inventory list
      *
      */
-    public boolean save()
-    {
-        return writeInventory();
-    }
+
     public void outputInventory()
     {
         int iTotalProducts=0;
