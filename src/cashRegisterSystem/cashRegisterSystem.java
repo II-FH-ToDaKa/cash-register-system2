@@ -507,7 +507,7 @@ public class cashRegisterSystem
      * @return no return value
      *
      * this function operates similar to updates but instead of only checking differences which item wa added
-     * this will che3ck the amount difference between the inventory and the inventory.txt
+     * this will check the amount difference between the inventory and the inventory.txt
      * to calculate the turnover with the sold products
      */
     public void statistic() {
