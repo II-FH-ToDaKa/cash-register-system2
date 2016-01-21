@@ -347,7 +347,7 @@ public class cashRegisterSystem
         {
             int iDiscount=ActualCart.getiDiscount();
             int iAmount=ActualCart.getArticle().get(iCurrentCart).getAmount();
-            double dNormalPrice=ActualCart.getArticle().get(iCurrentCart).getPrice()1;
+            double dNormalPrice=ActualCart.getArticle().get(iCurrentCart).getPrice();
             String sName=inventory.get(iCurrentCart).getName();
             double dNewPrice=(dNormalPrice*iAmount)-(dNormalPrice*iAmount*(iDiscount*0.01));
             //Output
