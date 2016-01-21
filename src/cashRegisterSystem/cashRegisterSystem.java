@@ -208,7 +208,10 @@ public class cashRegisterSystem
     public boolean otherPrice(cart ActualCart, char cBarcode[], double dprice)
     {
         int iCurrentCart=0;
-
+        if(dprice<0)
+        {
+            return false;
+        }
         iCurrentCart=searchArticleInCart(ActualCart,cBarcode);
 
         if(iCurrentCart==-1)
@@ -357,6 +360,49 @@ public class cashRegisterSystem
             System.out.printf("%1$.2f$\n",dNewPrice);
         }
     }
+    public void displayAll(cart ActualCart)
+    {
+
+        System.out.println("--------------------------------");
+        double dNewPrice;
+        double dFullPrice=0;
+        double dTax=0;
+        inventoryArticle TempArticle;
+        for(int iCounter = 0; iCounter<ActualCart.getArticle().size(); iCounter++)
+        {
+            dNewPrice=ActualCart.getArticle().get(iCounter).getPrice();
+            dNewPrice=dNewPrice-(dNewPrice*(ActualCart.getiDiscount()*0.01));
+
+            System.out.print(new String(ActualCart.getArticle().get(iCounter).getBarcode())+"\t\t");
+            System.out.print(ActualCart.getArticle().get(iCounter).getAmount());
+            System.out.printf(" x \t%1$.2f€\n",dNewPrice);
+            System.out.print(ActualCart.getArticle().get(iCounter).getName());
+            dNewPrice=dNewPrice*ActualCart.getArticle().get(iCounter).getAmount();
+            System.out.printf("\t\t%1$.2f€\n",dNewPrice);
+            dFullPrice+=dNewPrice;
+
+            TempArticle=searchArticle(ActualCart.getArticle().get(iCounter).getBarcode());
+            if(TempArticle.isFood())
+            {
+                dTax+=ActualCart.TAX_FOOD*dNewPrice*0.01;
+            }
+            else
+            {
+                dTax+=ActualCart.TAX_NORMAL*dNewPrice*0.01;
+            }
+        }
+        ActualCart.setdPricewoTax(dTax);
+        ActualCart.setdFullPrice(dFullPrice);
+        System.out.println("--------------------------------");
+        System.out.printf("Summe:\t\t\t\t\t\t%1$.2f€\n",ActualCart.getdFullPrice());
+        if(ActualCart.getiDiscount()!=0)
+        {
+            System.out.println("Rabatt:\t\t\t\t\t\t"+ActualCart.getiDiscount()+"%");
+        }
+        System.out.printf("Steuern:\t\t\t\t\t%1$.2f€\n",ActualCart.getdPricewoTax());
+        System.out.println("--------------------------------");
+        System.out.println("--------------------------------");
+    }
 
     /**
      * Function: inventory
@@ -396,10 +442,11 @@ public class cashRegisterSystem
      */
     public boolean update()
     {
-        //False if any deviation
-        boolean bCorrect=true;
         cashRegisterSystem invetoryData =new cashRegisterSystem();
-        invetoryData.readInventory();
+
+        //False if any deviation
+        boolean bCorrect=invetoryData.readInventory();
+
         char cBarcode[];
         inventoryArticle TempArticle;
         boolean bAnythingChanged;
@@ -471,7 +518,6 @@ public class cashRegisterSystem
         System.out.println("---------------------------------");
         return bCorrect;
     }
-
     /**
      * Funtion: statistic
      * @return no return value
@@ -527,6 +573,10 @@ public class cashRegisterSystem
      * this will disply the current stock which is registerd in the inventory list
      *
      */
+    public boolean save()
+    {
+        return writeInventory();
+    }
     public void outputInventory()
     {
         int iTotalProducts=0;
@@ -553,7 +603,6 @@ public class cashRegisterSystem
 
 
     }
-
     /**
      * Function wrongArticle
      * @param barcode

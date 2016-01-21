@@ -53,7 +53,7 @@ public class Main {
                     caTempCustomer=new cart();
 
                 }
-                if(menue==3)
+                else if(menue==3)
                 {
                     System.out.println("Barcode:");
                     cBarcode=sArticle.next().toCharArray();
@@ -86,7 +86,7 @@ public class Main {
                 }
                 else if(menue==6)
                 {
-
+                    crsREWE.statistic();
                 }
                 else if(menue==7)
                 {
@@ -94,11 +94,18 @@ public class Main {
                 }
                 else if(menue==8)
                 {
-
+                    if(crsREWE.save())
+                    {
+                        System.out.println("Erfolgreich gespeichert");
+                    }
+                    else
+                    {
+                        System.out.println("Konnte nicht gespeichert werden");
+                    }
                 }
                 else if(menue==9)
                 {
-
+                    System.out.println("Programm wird beendet...");
                 }
                 else
                 {
@@ -121,10 +128,11 @@ public class Main {
                 {
                     System.out.println("Barcode:");
                     cBarcode=sArticle.next().toCharArray();
+                    System.out.println("Neuer Preis:");
                     dPrice=Double.parseDouble(sArticle.next());
                     crsREWE.otherPrice(caTempCustomer,cBarcode,dPrice);
                 }
-                else if(menue==2)
+                else if(menue==3)
                 {
                     System.out.println("Rabatt, in Prozent:");
                     iAmount=Integer.parseInt(sArticle.next());
@@ -132,6 +140,8 @@ public class Main {
                 }
                 else if(menue==0)
                 {
+                    crsREWE.displayAll(caTempCustomer);
+                    caTempCustomer=null;
                 }
                 else
                 {
