@@ -114,22 +114,17 @@ public class cashRegisterSystem
             newcart.setBarcode(tempart.barcode);
             newcart.setName(tempart.getName());
             newcart.setAmount(iAmount);
-            ccart.setArticle(newcart);
             newcart.setPrice(tempart.getPrice());
-            /**
-             * add to price einfügen da sonst nur article hinzugefügt wird
-             * und remove from inventory
-             */
+            ccart.setArticle(newcart);
+            tempart.setAmount(tempart.getAmount()-iAmount);
 
             return true;
         }
         else
         {
-            //ERROR OUTPUT
-            //no article was found with that specific barcode//
+            return false;
         }
 
-        return false;
     }
     /**Function: delArticle
      * @author Karl
@@ -300,7 +295,6 @@ public class cashRegisterSystem
         newArticle.setFood(bisFood);
 
         inventory.add(newArticle);
-
         return true;
     }
 
@@ -353,10 +347,9 @@ public class cashRegisterSystem
         {
             int iDiscount=ActualCart.getiDiscount();
             int iAmount=ActualCart.getArticle().get(iCurrentCart).getAmount();
-            double dNormalPrice=inventory.get(iCurrentCart).getPrice();
+            double dNormalPrice=ActualCart.getArticle().get(iCurrentCart).getPrice()1;
             String sName=inventory.get(iCurrentCart).getName();
-            double dNewPrice=ActualCart.getArticle().get(iCurrentCart).getPrice();
-            dNewPrice=(dNewPrice*iAmount)-(dNewPrice*iAmount*(iDiscount*0.01));
+            double dNewPrice=(dNormalPrice*iAmount)-(dNormalPrice*iAmount*(iDiscount*0.01));
             //Output
 
             System.out.print(sName);
@@ -375,27 +368,21 @@ public class cashRegisterSystem
         inventoryArticle TempArticle;
         for(int iCounter = 0; iCounter<ActualCart.getArticle().size(); iCounter++)
         {
-            dNewPrice=ActualCart.getArticle().get(iCounter).getPrice();
-            dNewPrice=dNewPrice-(dNewPrice*(ActualCart.getiDiscount()*0.01));
+            displayArticle(ActualCart.getArticle().get(iCounter).getBarcode(),ActualCart);
 
-            System.out.print(new String(ActualCart.getArticle().get(iCounter).getBarcode())+"\t\t");
-            System.out.print(ActualCart.getArticle().get(iCounter).getAmount());
-            System.out.printf(" x \t%1$.2f€\n",dNewPrice);
-            System.out.print(ActualCart.getArticle().get(iCounter).getName());
-            dNewPrice=dNewPrice*ActualCart.getArticle().get(iCounter).getAmount();
-            System.out.printf("\t\t%1$.2f€\n",dNewPrice);
-            dFullPrice+=dNewPrice;
-
+            dFullPrice+=ActualCart.getArticle().get(iCounter).getPrice()*ActualCart.getArticle().get(iCounter).getAmount();
+            dFullPrice=dFullPrice-(dFullPrice*ActualCart.getiDiscount()*0.01);
             TempArticle=searchArticle(ActualCart.getArticle().get(iCounter).getBarcode());
             if(TempArticle.isFood())
             {
-                dTax+=ActualCart.TAX_FOOD*dNewPrice*0.01;
+                dTax+=ActualCart.TAX_FOOD*ActualCart.getArticle().get(iCounter).getPrice()*0.01;
             }
             else
             {
-                dTax+=ActualCart.TAX_NORMAL*dNewPrice*0.01;
+                dTax+=ActualCart.TAX_NORMAL*ActualCart.getArticle().get(iCounter).getPrice()*0.01;
             }
         }
+
         ActualCart.setdPricewoTax(dTax);
         ActualCart.setdFullPrice(dFullPrice);
         System.out.println("--------------------------------");
@@ -567,7 +554,7 @@ public class cashRegisterSystem
             }
             iTotalProducts++;
 
-            System.out.println(inventory.get(iCurrentInventory).getBarcode()+"\t"+inventory.get(iCurrentInventory).getName()+"\t"+inventory.get(iCurrentInventory).getAmount()+"\t"+inventory.get(iCurrentInventory).getPrice());
+            System.out.println(new String(inventory.get(iCurrentInventory).getBarcode())+"\t"+inventory.get(iCurrentInventory).getName()+"\t"+inventory.get(iCurrentInventory).getAmount()+"\t"+inventory.get(iCurrentInventory).getPrice());
 
         }
         if(iTotalProducts==0)
@@ -577,7 +564,7 @@ public class cashRegisterSystem
         else
         {
             System.out.println("------------------");
-            System.out.println("Es befinden sich "+iTotalProducts+ "im Bestand");
+            System.out.println("Es befinden sich "+iTotalProducts+ " Artikel im Bestand");
         }
 
 

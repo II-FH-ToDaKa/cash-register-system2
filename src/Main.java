@@ -73,7 +73,7 @@ public class Main {
                     cBarcode=sArticle.next().toCharArray();
                     if(crsREWE.removeItem(cBarcode))
                     {
-                        System.out.println(new String(cBarcode)+ " wurde aus dem Inventar entfern");
+                        System.out.println(new String(cBarcode)+ " wurde aus dem Inventar entfernt");
                     }
                     else
                     {
