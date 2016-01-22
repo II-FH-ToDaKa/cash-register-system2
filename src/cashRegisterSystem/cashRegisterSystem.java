@@ -370,16 +370,16 @@ public class cashRegisterSystem
         {
             displayArticle(ActualCart.getArticle().get(iCounter).getBarcode(),ActualCart);
 
-            dFullPrice+=ActualCart.getArticle().get(iCounter).getPrice()*ActualCart.getArticle().get(iCounter).getAmount();
-            dFullPrice=dFullPrice-(dFullPrice*ActualCart.getiDiscount()*0.01);
+            dFullPrice+=ActualCart.getArticle().get(iCounter).getPrice()*ActualCart.getArticle().get(iCounter).getAmount()-(ActualCart.getArticle().get(iCounter).getPrice()*ActualCart.getArticle().get(iCounter).getAmount()*ActualCart.getiDiscount()*0.01);
+
             TempArticle=searchArticle(ActualCart.getArticle().get(iCounter).getBarcode());
             if(TempArticle.isFood())
             {
-                dTax+=ActualCart.TAX_FOOD*ActualCart.getArticle().get(iCounter).getPrice()*0.01;
+                dTax+=ActualCart.TAX_FOOD*0.01*(ActualCart.getArticle().get(iCounter).getPrice()*ActualCart.getArticle().get(iCounter).getAmount()-(ActualCart.getArticle().get(iCounter).getPrice()*ActualCart.getArticle().get(iCounter).getAmount()*ActualCart.getiDiscount()*0.01));
             }
             else
             {
-                dTax+=ActualCart.TAX_NORMAL*ActualCart.getArticle().get(iCounter).getPrice()*0.01;
+                dTax+=ActualCart.TAX_NORMAL*0.01*(ActualCart.getArticle().get(iCounter).getPrice()*ActualCart.getArticle().get(iCounter).getAmount()-(ActualCart.getArticle().get(iCounter).getPrice()*ActualCart.getArticle().get(iCounter).getAmount()*ActualCart.getiDiscount()*0.01));
             }
         }
 
@@ -554,7 +554,7 @@ public class cashRegisterSystem
             }
             iTotalProducts++;
 
-            System.out.println(new String(inventory.get(iCurrentInventory).getBarcode())+"\t"+inventory.get(iCurrentInventory).getName()+"\t"+inventory.get(iCurrentInventory).getAmount()+"\t"+inventory.get(iCurrentInventory).getPrice());
+            System.out.println(new String(inventory.get(iCurrentInventory).getBarcode())+"\t"+inventory.get(iCurrentInventory).getName()+"\t"+inventory.get(iCurrentInventory).getAmount()+"\t\t"+inventory.get(iCurrentInventory).getPrice());
 
         }
         if(iTotalProducts==0)
