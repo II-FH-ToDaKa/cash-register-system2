@@ -1,0 +1,5 @@
+4012362044208:Knusper Flocken:4:1.99:true
+4062400115483:SIERRA Tequila Silver:38:13.99:true
+4014348916158:GLYSANTIN G48:12:14.99:false
+4008400204727:Kinder Schokolade:16:0.99:true
+3661075047818:Feuerzeug Lila:53:0.50:true
