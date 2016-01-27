@@ -110,14 +110,19 @@ public class cashRegisterSystem
 
         if(tempart!=null)
         {
-
-            newcart.setBarcode(tempart.barcode);
-            newcart.setName(tempart.getName());
-            newcart.setAmount(iAmount);
-            newcart.setPrice(tempart.getPrice());
-            ccart.setArticle(newcart);
-            tempart.setAmount(tempart.getAmount()-iAmount);
-
+            if(iAmount>tempart.getAmount())
+            {
+                System.out.println("Nicht genug Artikel auf Lager");
+            }
+            else
+            {
+                newcart.setBarcode(tempart.barcode);
+                newcart.setName(tempart.getName());
+                newcart.setAmount(iAmount);
+                newcart.setPrice(tempart.getPrice());
+                ccart.setArticle(newcart);
+                tempart.setAmount(tempart.getAmount()-iAmount);
+            }
             return true;
         }
         else
@@ -348,7 +353,7 @@ public class cashRegisterSystem
             int iDiscount=ActualCart.getiDiscount();
             int iAmount=ActualCart.getArticle().get(iCurrentCart).getAmount();
             double dNormalPrice=ActualCart.getArticle().get(iCurrentCart).getPrice();
-            String sName=inventory.get(iCurrentCart).getName();
+            String sName=ActualCart.getArticle().get(iCurrentCart).getName();
             double dNewPrice=(dNormalPrice*iAmount)-(dNormalPrice*iAmount*(iDiscount*0.01));
             //Output
 
