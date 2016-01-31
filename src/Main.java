@@ -12,14 +12,14 @@ public class Main {
         cart caTempCustomer = null;
         Scanner sMenue = new Scanner(System.in);
         Scanner sArticle = new Scanner(System.in);
-        int menue=-1;
+        int iMenue=-1;
         char[] cBarcode=new char[13];
         int iAmount;
         String sName;
         double dPrice;
         boolean bIsFood;
 
-        while (menue!=9) {
+        while (iMenue!=9) {
             System.out.println("Cash Register System - II-FH-ToDaKa");
             System.out.println("---------------------------------");
             if (caTempCustomer == null) {
@@ -44,16 +44,16 @@ public class Main {
             }
 
 
-            menue=Integer.parseInt(sMenue.next());
+            iMenue=Integer.parseInt(sMenue.next());
 
             if(caTempCustomer==null)
             {
-                if(menue==1)
+                if(iMenue==1)
                 {
                     caTempCustomer=new cart();
 
                 }
-                else if(menue==3)
+                else if(iMenue==3)
                 {
                     System.out.println("Barcode:");
                     cBarcode=sArticle.next().toCharArray();
@@ -67,7 +67,7 @@ public class Main {
                     bIsFood=Boolean.parseBoolean(sArticle.next());
                     crsREWE.newItem(cBarcode, sName, dPrice, iAmount, bIsFood);
                 }
-                else if(menue==4)
+                else if(iMenue==4)
                 {
                     System.out.println("Barcode:");
                     cBarcode=sArticle.next().toCharArray();
@@ -80,19 +80,19 @@ public class Main {
                         crsREWE.wrongArticle(cBarcode);
                     }
                 }
-                else if(menue==5)
+                else if(iMenue==5)
                 {
                     crsREWE.outputInventory();
                 }
-                else if(menue==6)
+                else if(iMenue==6)
                 {
                     crsREWE.statistic();
                 }
-                else if(menue==7)
+                else if(iMenue==7)
                 {
                     crsREWE.update();
                 }
-                else if(menue==8)
+                else if(iMenue==8)
                 {
                     if(crsREWE.writeInventory())
                     {
@@ -103,7 +103,7 @@ public class Main {
                         System.out.println("Konnte nicht gespeichert werden");
                     }
                 }
-                else if(menue==9)
+                else if(iMenue==9)
                 {
                     System.out.println("Programm wird beendet...");
                 }
@@ -113,7 +113,7 @@ public class Main {
                 }
             }
             else {
-                if(menue==1)
+                if(iMenue==1)
                 {
 
                     System.out.println("Barcode:");
@@ -124,7 +124,7 @@ public class Main {
                     //addtoprice
                     crsREWE.displayArticle(cBarcode,caTempCustomer);
                 }
-                else if(menue==2)
+                else if(iMenue==2)
                 {
                     System.out.println("Barcode:");
                     cBarcode=sArticle.next().toCharArray();
@@ -132,13 +132,13 @@ public class Main {
                     dPrice=Double.parseDouble(sArticle.next());
                     crsREWE.otherPrice(caTempCustomer,cBarcode,dPrice);
                 }
-                else if(menue==3)
+                else if(iMenue==3)
                 {
                     System.out.println("Rabatt, in Prozent:");
                     iAmount=Integer.parseInt(sArticle.next());
                     crsREWE.discount(caTempCustomer,iAmount);
                 }
-                else if(menue==0)
+                else if(iMenue==0)
                 {
                     crsREWE.displayAll(caTempCustomer);
                     caTempCustomer=null;

@@ -118,6 +118,7 @@ public class cashRegisterSystem
             {
                 newcart.setBarcode(tempart.barcode);
                 newcart.setName(tempart.getName());
+
                 newcart.setAmount(iAmount);
                 newcart.setPrice(tempart.getPrice());
                 ccart.setArticle(newcart);

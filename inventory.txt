@@ -3,3 +3,6 @@
 4014348916158:GLYSANTIN G48:12:14.99:false
 4008400204727:Kinder Schokolade:16:0.99:true
 3661075047818:Feuerzeug Lila:53:0.50:true
+9783808536261:Informationstechnik, Neue Netze:27:33.50:false
+4104640015014:Förstina Sprudel Naturell:45:0.39;true
+4250542847472:Collegeblock 80 Blatt:23:0.99:false
