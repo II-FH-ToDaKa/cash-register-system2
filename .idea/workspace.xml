@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="615d7f40-999a-4f13-8c69-064c4b956668" name="Default" comment="">
+    <list default="true" id="615d7f40-999a-4f13-8c69-064c4b956668" name="Default" comment="fixed Taxes">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Präsentationen/Endpräsentation.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Präsentationen/Zwischenpräsentation.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" afterPath="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" />
     </list>
     <ignored path="cash-register-system.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,10 +37,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cart.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cart.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35066006">
+            <state vertical-scroll-proportion="0.0">
               <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
               <folding />
             </state>
@@ -56,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cashRegisterSystemTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cashRegisterSystemTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.32008368">
+              <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -79,6 +80,9 @@
     <option name="UPDATE_TYPE" value="REBASE" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -739,7 +743,7 @@
       <workItem from="1453199784066" duration="2430000" />
       <workItem from="1453372929182" duration="3706000" />
       <workItem from="1456422761770" duration="3154000" />
-      <workItem from="1456499880852" duration="606000" />
+      <workItem from="1456499880852" duration="1014000" />
     </task>
     <task id="LOCAL-00001" summary="added a whole bunch of comments and fixed some spelling error in the function where function were written like some_function which isnt coherent with the java codestyle">
       <created>1453120791711</created>
@@ -795,7 +799,13 @@
       <option name="project" value="LOCAL" />
       <updated>1456500436691</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fixed Taxes">
+      <created>1456500513939</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1456500513939</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -808,13 +818,16 @@
     <history-entry file="cashRegisterSystemTest - 2016.02.26 at 16h 24m 31s.xml">
       <configuration name="cashRegisterSystemTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="cashRegisterSystemTest - 2016.02.26 at 16h 30m 51s.xml">
+      <configuration name="cashRegisterSystemTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35090000" />
+    <option name="totallyTimeSpent" value="35498000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="45" width="2182" height="1406" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -823,10 +836,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871898" sideWeight="0.50185186" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20496397" sideWeight="0.48472223" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20496397" sideWeight="0.48472223" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21157408" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21157408" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -860,7 +873,8 @@
     <MESSAGE value="added more comments" />
     <MESSAGE value="fixes" />
     <MESSAGE value="updated UnitTests" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated UnitTests" />
+    <MESSAGE value="fixed Taxes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed Taxes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1073,14 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1091,8 +1097,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35066006">
+        <state vertical-scroll-proportion="0.0">
           <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32008368">
+          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
           <folding />
         </state>
       </provider>
