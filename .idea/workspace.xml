@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="615d7f40-999a-4f13-8c69-064c4b956668" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java" afterPath="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" afterPath="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" />
     </list>
     <ignored path="cash-register-system.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,15 +36,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cart.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cart.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-              <folding>
-                <element signature="e#2045#2046#0" expanded="true" />
-                <element signature="e#2098#2099#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.35066006">
+              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -59,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cashRegisterSystemTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cashRegisterSystemTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8349835">
-              <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,9 +89,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" />
         <option value="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystem.java" />
         <option value="$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java" />
+        <option value="$PROJECT_DIR$/src/cashRegisterSystem/cart.java" />
       </list>
     </option>
   </component>
@@ -742,7 +739,7 @@
       <workItem from="1453199784066" duration="2430000" />
       <workItem from="1453372929182" duration="3706000" />
       <workItem from="1456422761770" duration="3154000" />
-      <workItem from="1456499880852" duration="491000" />
+      <workItem from="1456499880852" duration="606000" />
     </task>
     <task id="LOCAL-00001" summary="added a whole bunch of comments and fixed some spelling error in the function where function were written like some_function which isnt coherent with the java codestyle">
       <created>1453120791711</created>
@@ -792,7 +789,13 @@
       <option name="project" value="LOCAL" />
       <updated>1453379246309</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="updated UnitTests">
+      <created>1456500436691</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1456500436691</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -807,7 +810,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34975000" />
+    <option name="totallyTimeSpent" value="35090000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="45" width="2182" height="1406" extended-state="6" />
@@ -856,7 +859,8 @@
     <MESSAGE value="Update function(fix and Test)" />
     <MESSAGE value="added more comments" />
     <MESSAGE value="fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes" />
+    <MESSAGE value="updated UnitTests" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated UnitTests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -881,10 +885,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -908,10 +909,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="80" column="32" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="32" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -935,10 +933,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -962,10 +957,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -997,10 +989,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="180" column="0" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1024,10 +1013,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,10 +1029,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="72" column="47" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="47" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1070,10 +1053,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1093,14 +1073,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
+    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-          <folding>
-            <element signature="e#2045#2046#0" expanded="true" />
-            <element signature="e#2098#2099#0" expanded="true" />
-          </folding>
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1112,10 +1089,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cashRegisterSystemTest.java">
+    <entry file="file://$PROJECT_DIR$/src/cashRegisterSystem/cart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8349835">
-          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.35066006">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
           <folding />
         </state>
       </provider>

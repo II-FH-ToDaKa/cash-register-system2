@@ -16,8 +16,8 @@ import java.util.List;
 public class cart
 {
     public static final int MAX_CHAR=14;
-    public static final double TAX_NORMAL=19;
-    public static final double TAX_FOOD=7;
+    public static final double TAX_NORMAL=1.19;
+    public static final double TAX_FOOD=1.07;
 
     private List<article> alcartInventory= new ArrayList<article>();
     private int     iDiscount=0;
