@@ -286,6 +286,7 @@ public class cashRegisterSystem
 
     /**
      * Function: newItem
+     * @author Karl
      * @param cBarcode
      * @param sName
      * @param dPrice
@@ -306,6 +307,7 @@ public class cashRegisterSystem
 
     /**
      * Function: removeItem
+     * @author Tobias
      * @param cBarcode
      * @return successful if item was removed from the inventory, failed if item wasnt found
      *
@@ -330,6 +332,7 @@ public class cashRegisterSystem
 
     /**
      * Function: displayArticle
+     * @author Daniel
      * @param cBarcode
      * @param ActualCart
      * @return no return value
@@ -405,6 +408,7 @@ public class cashRegisterSystem
 
     /**
      * Function: update
+     * @author Daniel
      * @return successful update process
      *
      * this function will check differences between inventory list and inventory.txt
@@ -496,6 +500,7 @@ public class cashRegisterSystem
     }
     /**
      * Funtion: statistic
+     * @author Daniel
      * @return no return value
      *
      * this function operates similar to updates but instead of only checking differences which item wa added
@@ -543,6 +548,7 @@ public class cashRegisterSystem
     }
     /**
      * Funtion: outputInventory
+     * @author Daniel
      * @return no return value
      *
      * this will disply the current stock which is registerd in the inventory list
@@ -577,6 +583,7 @@ public class cashRegisterSystem
     }
     /**
      * Function wrongArticle
+     * @author Daniel
      * @param barcode
      *
      * simple output to display that you tried a wrong
@@ -590,6 +597,7 @@ public class cashRegisterSystem
 
     /**
      * Function: readInventory
+     * @author Tobias
      * @return no return value
      *
      * this function reads the inventory.txr and copies the content into the inventory list
@@ -632,6 +640,7 @@ public class cashRegisterSystem
 
     /**
      * Function: writeInventory
+     * @author Tobias
      * @return no return value
      *
      * this function is the opposite of read_invetory
@@ -669,6 +678,7 @@ public class cashRegisterSystem
 
     /**
      * Function: searchArticle
+     * @author Daniel
      * @param cBarcode
      * @return a specific article from the inventory list with the help of the barcode
      * will return a NULL if it didnt work/ didnt found the article
@@ -691,6 +701,7 @@ public class cashRegisterSystem
 
     /**
      * FUnction: compareBarcode
+     * @author Daniel
      * @param cBarcodeA
      * @param cBarcodeB
      * @return successful if both barcodes are similar
@@ -714,6 +725,7 @@ public class cashRegisterSystem
 
     /**
      * Function: searchArticleInCart
+     * @author Daniel
      * @param ActualCart
      * @param cBarcode
      * @return the postion in the cart at which the searched item is
