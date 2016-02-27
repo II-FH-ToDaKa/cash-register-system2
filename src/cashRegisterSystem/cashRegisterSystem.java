@@ -22,6 +22,9 @@ public class cashRegisterSystem
 
     /**
      * Class: inventoryArticle
+     *
+     * @author Tobias,Daniel
+     *
      * this is the class to define the stock which is currently in the store
      * will be the datatype for a list
      * the stock is listed in a txt file asnd will have the structure like the variables in this class
@@ -85,6 +88,7 @@ public class cashRegisterSystem
 
     /**
      * List: inventoryArticle
+     *
      * this is the stocklist which every function works with
      * it will be filled with information from the inventory.txt
      * and at the end it will be copied again into the txt for the difference what was selled
@@ -148,6 +152,10 @@ public class cashRegisterSystem
         List <cart.article> alList=new ArrayList<cart.article>();
         alList=ccart.getArticle();
 
+        inventoryArticle tempart;
+        tempart= searchArticle(cBarcode);
+
+
         for (int i = 0; i < isizeInventory; i++)
         {
             if (compareBarcode(cBarcode, alList.get(i).getBarcode())) //find the article number in the cart
@@ -168,6 +176,8 @@ public class cashRegisterSystem
             ccart.removeArticle(isearchArticle);
             removeFromPrice(ccart,cBarcode,iAmount);
 
+            tempart.setAmount(tempart.getAmount()+ iAmount);
+
             return true;
         }
         else
@@ -179,6 +189,8 @@ public class cashRegisterSystem
             ccart.setSpecificArticle(isearchArticle,alList.get(isearchArticle).getBarcode()
                     ,alList.get(isearchArticle).getName()
                     ,iAmount);
+
+            tempart.setAmount(tempart.getAmount()+ iAmount);
             return true;
         }
 
@@ -292,7 +304,7 @@ public class cashRegisterSystem
      * @param dPrice
      * @param iAmount
      * @param bisFood
-     * @return if a article was added successfully
+     * @return if a article was created successfully
      *
      * adds a new article into the inventory list
      */
@@ -309,7 +321,7 @@ public class cashRegisterSystem
      * Function: removeItem
      * @author Tobias
      * @param cBarcode
-     * @return successful if item was removed from the inventory, failed if item wasnt found
+     * @return successful if item was removed from the inventory, failed if item wasn't found
      *
      * remove a specific item from the inventory list
      */
@@ -367,6 +379,15 @@ public class cashRegisterSystem
             System.out.printf("%1$.2f$\n",dNewPrice);
         }
     }
+    /**
+     * Function: displayAll
+     * @param ActualCart
+     * @return no return value
+     *
+     * Displays all articles from  the cart
+     * shows barcode, name, price, the price with discount, amount (picture ....later)
+     *
+     */
     public void displayAll(cart ActualCart)
     {
 
@@ -417,7 +438,7 @@ public class cashRegisterSystem
      *
      * the same will happen if you have changed the price on the cash register for some items
      * or the name
-     * or the amount in the cash register is larger than the amount saved in the inventory.txt
+     * or the amount in7 the cash register is larger than the amount saved in the inventory.txt
      * or the specification if an article is a food or not
      */
     public boolean update()
@@ -602,7 +623,7 @@ public class cashRegisterSystem
      * @return no return value
      *
      * this function reads the inventory.txr and copies the content into the inventory list
-     * mainly used at the3 start of the cash register system
+     * mainly used at the start of the cash register system
      */
     private boolean readInventory()
     {
