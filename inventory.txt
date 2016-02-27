@@ -6,4 +6,3 @@
 9783808536261:Informationstechnik, Neue Netze:27:33.5:false
 4104640015014:Förstina Sprudel Naturell:45:0.39:false
 4250542847472:Collegeblock 80 Blatt:23:0.99:false
-12345678901234:Apfel:4:0.99:false
