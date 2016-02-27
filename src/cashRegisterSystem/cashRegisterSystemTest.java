@@ -13,17 +13,17 @@ public class cashRegisterSystemTest {
     cashRegisterSystem CRS = new cashRegisterSystem();
     cart myCart = new cart();
 
-    String barcode = "12345678901234";
-    String articleName = "Apfel";
-    double price = 0.99;
-    int amountInventory = 4;
+    String sBarcode = "12345678901234";
+    String sArticleName = "Apfel";
+    double dPrice = 0.99;
+    int iAmountInventory = 4;
     boolean isFood = true;
 
 
     @Before
     public void setUp() throws Exception {
 
-        CRS.newItem(barcode.toCharArray(), articleName, price, amountInventory, isFood);
+        CRS.update();
     }
 
     @After
@@ -33,30 +33,39 @@ public class cashRegisterSystemTest {
 
     @Test
     public void testAddToPrice() throws Exception {
-        double endPrice = 2.1186; //price*amountBuy*myCart.TAX_FOOD;
+        double dEndPrice = 2.1186; //price*amountBuy*myCart.TAX_FOOD;
 
-        int amountBuy = 2;
+        int iAmountBuy = 2;
 
-        CRS.addToPrice(myCart ,barcode.toCharArray(), amountBuy);
+        CRS.addToPrice(myCart ,sBarcode.toCharArray(), iAmountBuy);
 
-        assertEquals(endPrice, myCart.getdFullPrice(), 0.001);
+        assertEquals(dEndPrice, myCart.getdFullPrice(), 0.001);
     }
 
     @Test
     public void testRemoveFromPrice() throws Exception {
-        double endPrice = 1.0593;//price * (amountBuy - amountRemove) * myCart.TAX_FOOD;
+        double dEndPrice = 1.0593;//price * (amountBuy - amountRemove) * myCart.TAX_FOOD;
 
-        int amountBuy = 2;
-        int amountRemove = 1;
+        int iAmountBuy = 2;
+        int iAmountRemove = 1;
 
-        CRS.addToPrice(myCart, barcode.toCharArray(), amountBuy);
-        CRS.removeFromPrice(myCart, barcode.toCharArray(), amountRemove);
+        CRS.addToPrice(myCart, sBarcode.toCharArray(), iAmountBuy);
+        CRS.removeFromPrice(myCart, sBarcode.toCharArray(), iAmountRemove);
 
-        assertEquals(endPrice, myCart.getdFullPrice(), 0.001);
+        assertEquals(dEndPrice, myCart.getdFullPrice(), 0.001);
     }
 
     @Test
     public void testStatistic() throws Exception {
+        double dEndEarning = 0.99;
+
+        int iAmountBuy = 2;
+        int iAmountRemove = 1;
+
+        CRS.addArticle(sBarcode.toCharArray(), iAmountBuy, myCart);
+        CRS.delArticle(sBarcode.toCharArray(), iAmountRemove, myCart);
+
+        assertEquals(dEndEarning, CRS.statistic(), 0.001);
 
     }
 }

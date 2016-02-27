@@ -507,7 +507,7 @@ public class cashRegisterSystem
      * this will check the amount difference between the inventory and the inventory.txt
      * to calculate the turnover with the sold products
      */
-    public void statistic() {
+    public double statistic() {
         int iNewArticle = 0;
         cashRegisterSystem invetoryData = new cashRegisterSystem();
         invetoryData.readInventory();
@@ -545,6 +545,7 @@ public class cashRegisterSystem
         {
             System.out.println("Es wurde kein Artikel verkauft");
         }
+        return dEarning;
     }
     /**
      * Funtion: outputInventory
