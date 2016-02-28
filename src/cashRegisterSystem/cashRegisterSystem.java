@@ -29,7 +29,7 @@ public class cashRegisterSystem
      * will be the datatype for a list
      * the stock is listed in a txt file asnd will have the structure like the variables in this class
      */
-    public class inventoryArticle
+    static public class inventoryArticle
     {
         private char barcode[];
         private String name;
