@@ -1,6 +1,9 @@
 import cashRegisterSystem.*;
+import com.sqlconnector.ConnectionConfiguration;
 import sun.nio.ch.Net;
 import java.util.*;
+import java.sql.*;
+
 
 public class Main {
 
@@ -31,6 +34,7 @@ public class Main {
                 System.out.println("7 Update");
                 System.out.println("8 Speichern");
                 System.out.println("9 Program verlassen");
+                System.out.println("10 datenbank");
 
 
             } else {
@@ -107,6 +111,37 @@ public class Main {
                 {
                     System.out.println("Programm wird beendet...");
                 }
+                else if(iMenue==10)
+                {
+                    Connection connection=null;
+                    try{
+                        connection= ConnectionConfiguration.getConnection();
+                        if(connection!=null)
+                        {
+                            System.out.println("Verbindung erfolgreich hergestellt");
+
+
+                            Statement query;
+                            query = connection.createStatement();
+
+                            ResultSet result = query.executeQuery("SELECT * FROM `inventory`");
+                            while (result.next())
+                            {
+                                String barcode = result.getString("barcode");
+                                String name = result.getString("name");
+                                String amount = result.getString("amount");
+                                String price = result.getString("price");
+
+                                System.out.println(barcode+' '+name+' '+amount+' '+price);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+
+                    }
+                }
                 else
                 {
                     System.out.println("Fehlerhafte eingabe");
@@ -143,6 +178,7 @@ public class Main {
                     crsREWE.displayAll(caTempCustomer);
                     caTempCustomer=null;
                 }
+
                 else
                 {
                     System.out.println("Fehlerhafte eingabe");
