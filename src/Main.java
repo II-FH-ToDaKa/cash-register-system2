@@ -16,6 +16,7 @@ public class Main {
         Scanner sMenue = new Scanner(System.in);
         Scanner sArticle = new Scanner(System.in);
         int iMenue=-1;
+        long iBarcode;
         char[] cBarcode=new char[13];
         int iAmount;
         String sName;
@@ -113,34 +114,6 @@ public class Main {
                 }
                 else if(iMenue==10)
                 {
-                    Connection connection=null;
-                    try{
-                        connection= ConnectionConfiguration.getConnection();
-                        if(connection!=null)
-                        {
-                            System.out.println("Verbindung erfolgreich hergestellt");
-
-
-                            Statement query;
-                            query = connection.createStatement();
-
-                            ResultSet result = query.executeQuery("SELECT * FROM `inventory`");
-                            while (result.next())
-                            {
-                                String barcode = result.getString("barcode");
-                                String name = result.getString("name");
-                                String amount = result.getString("amount");
-                                String price = result.getString("price");
-
-                                System.out.println(barcode+' '+name+' '+amount+' '+price);
-                            }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        e.printStackTrace();
-
-                    }
                 }
                 else
                 {
@@ -152,10 +125,11 @@ public class Main {
                 {
 
                     System.out.println("Barcode:");
-                    cBarcode=sArticle.next().toCharArray();
+                    iBarcode=Long.parseLong(sArticle.next());
                     System.out.println("Menge:");
                     iAmount=Integer.parseInt(sArticle.next());
-                    crsREWE.addArticle(cBarcode,iAmount,caTempCustomer);
+
+                    crsREWE.addArticle(iBarcode, iAmount, 1, 0);
                     //addtoprice
                     crsREWE.displayArticle(cBarcode,caTempCustomer);
                 }

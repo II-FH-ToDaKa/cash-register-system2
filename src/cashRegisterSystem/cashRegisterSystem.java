@@ -2,7 +2,13 @@
 package cashRegisterSystem;
 
 
+import com.sqlconnector.ConnectionConfiguration;
+import com.sun.corba.se.spi.orbutil.fsm.Guard;
+
 import java.io.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -31,11 +37,14 @@ public class cashRegisterSystem
      */
     static public class inventoryArticle
     {
+
+        long iBarcode;
         private char barcode[];
         private String name;
         private int amount;
         private double price;
         private boolean isFood;
+        private int BonID;
 
         public boolean isFood() {
             return isFood;
@@ -95,45 +104,29 @@ public class cashRegisterSystem
      */
     private List <inventoryArticle> inventory = new ArrayList<inventoryArticle>();
 
-    /**
-     * Function: addArticle
-     * @author Karl
-     * @param cBarcode
-     * @param iAmount
-     * @param ccart
-     * @return successful if adding to the cart
-     *
-     * adds a article to the cart
-     * current problem: doesnt remove from inventory
-     */
-    public boolean addArticle(char[] cBarcode, int iAmount, cart ccart)
+    public boolean addArticle(long iBarcode, int iAmount,int iBonID, int iCustomerID)
     {
-        cart.article newcart=new cart.article(cBarcode,"",iAmount,iAmount);
-        inventoryArticle tempart;
-        tempart= searchArticle(cBarcode);
-
-        if(tempart!=null)
-        {
-            if(iAmount>tempart.getAmount())
+            ConnectionConfiguration Connection =new ConnectionConfiguration();
+            boolean ReturnValue=false;
+            int ActualAmount=AmountArticle(iBarcode);
+            if(ActualAmount>=iAmount)
             {
-                System.out.println("Nicht genug Artikel auf Lager");
+                ReturnValue =Connection.Update("INSERT INTO `boninventory` (`BonInventoryID`, `barcode`, `amount`, `DateTime`, `BonID`) VALUES ('"+iCustomerID+"', '"+iBarcode+"', '"+iAmount+"', CURRENT_TIMESTAMP, '"+iBonID+"')");
+                Connection.Update("UPDATE `inventory` SET `amount` = '"+(ActualAmount-iAmount)+"' WHERE `inventory`.`barcode` ="+iBarcode);
             }
             else
             {
-                newcart.setBarcode(tempart.barcode);
-                newcart.setName(tempart.getName());
 
-                newcart.setAmount(iAmount);
-                newcart.setPrice(tempart.getPrice());
-                ccart.setArticle(newcart);
-                tempart.setAmount(tempart.getAmount()-iAmount);
+                ErrorMessage("Artikel nicht im Bestand");
             }
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+            return ReturnValue;
+
+    }
+
+    public int AmountArticle(long iBarcode)
+    {
+        ConnectionConfiguration Connection =new ConnectionConfiguration();
+        return Integer.parseInt (Connection.OnResult("SELECT amount FROM inventory WHERE barcode="+iBarcode));
 
     }
     /**Function: delArticle
@@ -782,6 +775,10 @@ public class cashRegisterSystem
         }
         return -1;
 
+    }
+    private void ErrorMessage(String Statement)
+    {
+        System.out.println(Statement);
     }
 }
 
