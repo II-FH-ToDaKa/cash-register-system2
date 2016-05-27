@@ -118,7 +118,6 @@ public class cashRegisterSystemTest {
         int iAmountBuy = 2;
         int iAmountRemove = 1;
 
-        CRS.delArticle(sBarcode.toCharArray(), iAmountRemove, myCart);
 
         assertEquals(dEndEarning, CRS.statistic(), 0.001);
 

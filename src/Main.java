@@ -129,7 +129,7 @@ public class Main {
                     System.out.println("Menge:");
                     iAmount=Integer.parseInt(sArticle.next());
 
-                    crsREWE.addArticle(iBarcode, iAmount, 1, 0);
+                    crsREWE.addArticle(iBarcode, iAmount, 2, 0);
                     //addtoprice
                     crsREWE.displayArticle(cBarcode,caTempCustomer);
                 }

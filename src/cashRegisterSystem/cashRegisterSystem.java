@@ -108,10 +108,20 @@ public class cashRegisterSystem
     {
             ConnectionConfiguration Connection =new ConnectionConfiguration();
             boolean ReturnValue=false;
-            int ActualAmount=AmountArticle(iBarcode);
+            int ActualAmount=AmountArticleInventory(iBarcode);
             if(ActualAmount>=iAmount)
             {
-                ReturnValue =Connection.Update("INSERT INTO `boninventory` (`BonInventoryID`, `barcode`, `amount`, `DateTime`, `BonID`) VALUES ('"+iCustomerID+"', '"+iBarcode+"', '"+iAmount+"', CURRENT_TIMESTAMP, '"+iBonID+"')");
+                int BonInventoryID=Integer.parseInt(Connection.OnResult("SELECT BonInventoryID FROM `boninventory` WHERE barcode="+iBarcode+" AND BonID="+iBonID));
+                if(BonInventoryID!=-1)
+                {
+
+                   ReturnValue=Connection.Update("UPDATE `boninventory` SET `amount` = `amount`+"+iAmount+" WHERE `boninventory`.`BonInventoryID` ="+BonInventoryID);
+
+                }
+                else
+                {
+                    ReturnValue =Connection.Update("INSERT INTO `boninventory` (`BonInventoryID`, `barcode`, `amount`, `DateTime`, `BonID`) VALUES ('"+iCustomerID+"', '"+iBarcode+"', '"+iAmount+"', CURRENT_TIMESTAMP, '"+iBonID+"')");
+                }
                 Connection.Update("UPDATE `inventory` SET `amount` = '"+(ActualAmount-iAmount)+"' WHERE `inventory`.`barcode` ="+iBarcode);
             }
             else
@@ -123,7 +133,7 @@ public class cashRegisterSystem
 
     }
 
-    public int AmountArticle(long iBarcode)
+    public int AmountArticleInventory(long iBarcode)
     {
         ConnectionConfiguration Connection =new ConnectionConfiguration();
         return Integer.parseInt (Connection.OnResult("SELECT amount FROM inventory WHERE barcode="+iBarcode));
@@ -138,56 +148,21 @@ public class cashRegisterSystem
      *
      * removes an article from the cart
      */
-    boolean delArticle(char[] cBarcode, int iAmount, cart ccart)
+    boolean delArticle(long iBarcode, int iAmount, int iBonID)
     {
-        int isizeInventory=inventory.size();
-        int isearchArticle=-1;
-        List <cart.article> alList=new ArrayList<cart.article>();
-        alList=ccart.getArticle();
+        ConnectionConfiguration Connection =new ConnectionConfiguration();
 
-        inventoryArticle tempart;
-        tempart= searchArticle(cBarcode);
-
-
-        for (int i = 0; i < isizeInventory; i++)
+        int BonInventoryID=Integer.parseInt(Connection.OnResult("SELECT BonInventoryID FROM `boninventory` WHERE barcode="+iBarcode+" AND BonID="+iBonID));
+        int iRealAmount=
+        if(iRealAmount!)
         {
-            if (compareBarcode(cBarcode, alList.get(i).getBarcode())) //find the article number in the cart
-            {
-                isearchArticle=i;
-                break;
-            }
-            else
-            {
-                //ERROR NOT FOUND
-                return false;
-            }
-        }
 
-        if (alList.get(isearchArticle).getAmount()==iAmount) //decide delete one / more or all items of the article in the list
-        {
-            //delete complete articles from ccart
-            ccart.removeArticle(isearchArticle);
-            removeFromPrice(ccart,cBarcode,iAmount);
 
-            tempart.setAmount(tempart.getAmount()+ iAmount);
-
-            return true;
         }
         else
         {
-            removeFromPrice(ccart,cBarcode,iAmount);
-            //delete a specific amount from ccart
-            removeFromPrice(ccart,cBarcode,iAmount);
 
-            ccart.setSpecificArticle(isearchArticle,alList.get(isearchArticle).getBarcode()
-                    ,alList.get(isearchArticle).getName()
-                    ,iAmount);
-
-            tempart.setAmount(tempart.getAmount()+ iAmount);
-            return true;
         }
-
-
     }
 
     /**
