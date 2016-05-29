@@ -57,7 +57,7 @@ public class cashRegisterSystemTest {
             System.out.println("Error reading File");
         }
 
-        CRS.newItem(sBarcode.toCharArray(), sArticleName, dPrice, iAmountInventory, isFood);
+        CRS.newItem(Long.parseLong(sBarcode), sArticleName, dPrice, iAmountInventory, isFood);
         CRS.writeInventory();
     }
 

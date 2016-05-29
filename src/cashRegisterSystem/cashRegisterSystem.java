@@ -111,18 +111,19 @@ public class cashRegisterSystem
             int ActualAmount=AmountArticleInventory(iBarcode);
             if(ActualAmount>=iAmount)
             {
-                int BonInventoryID=Integer.parseInt(Connection.OnResult("SELECT BonInventoryID FROM `boninventory` WHERE barcode="+iBarcode+" AND BonID="+iBonID));
+
+                float Price=Float.parseFloat(Connection.OnResult("SELECT price FROM `inventory` WHERE barcode="+iBarcode));
+                int BonInventoryID=Integer.parseInt(Connection.OnResult("SELECT BonInventoryID FROM `boninventory` WHERE barcode="+iBarcode+" AND BonID="+iBonID+" AND Price like "+Price));
                 if(BonInventoryID!=-1)
                 {
-
-                   ReturnValue=Connection.Update("UPDATE `boninventory` SET `amount` = `amount`+"+iAmount+" WHERE `boninventory`.`BonInventoryID` ="+BonInventoryID);
-
+                    ReturnValue=Connection.Update("UPDATE `boninventory` SET `amount` = `amount`+"+iAmount+" WHERE `boninventory`.`BonInventoryID` ="+BonInventoryID);
                 }
                 else
                 {
-                    ReturnValue =Connection.Update("INSERT INTO `boninventory` (`BonInventoryID`, `barcode`, `amount`, `DateTime`, `BonID`) VALUES ('"+iCustomerID+"', '"+iBarcode+"', '"+iAmount+"', CURRENT_TIMESTAMP, '"+iBonID+"')");
+                    ReturnValue =Connection.Update("INSERT INTO `boninventory` (`BonInventoryID`, `barcode`, `amount`,  `Price`, `DateTime`, `BonID`) VALUES ('"+iCustomerID+"', '"+iBarcode+"', '"+iAmount+"', '"+Price+"', CURRENT_TIMESTAMP, '"+iBonID+"')");
+
                 }
-                Connection.Update("UPDATE `inventory` SET `amount` = '"+(ActualAmount-iAmount)+"' WHERE `inventory`.`barcode` ="+iBarcode);
+                Connection.Update("UPDATE `inventory` SET `amount` = '"+(ActualAmount-iAmount)+"' WHERE `barcode` ="+iBarcode);
             }
             else
             {
@@ -141,28 +142,28 @@ public class cashRegisterSystem
     }
     /**Function: delArticle
      * @author Karl
-     * @param cBarcode
-     * @param iAmount
-     * @param ccart
      * @return successful if removing from the cart
      *
      * removes an article from the cart
      */
-    boolean delArticle(long iBarcode, int iAmount, int iBonID)
+    public boolean delArticle(long iBarcode, int iAmount, int iBonID)
     {
         ConnectionConfiguration Connection =new ConnectionConfiguration();
-
-        int BonInventoryID=Integer.parseInt(Connection.OnResult("SELECT BonInventoryID FROM `boninventory` WHERE barcode="+iBarcode+" AND BonID="+iBonID));
-        int iRealAmount=
-        if(iRealAmount!)
+        int ActualAmount=Integer.parseInt(Connection.OnResult("SELECT amount FROM `boninventory` WHERE barcode="+iBarcode+" AND BonID="+iBonID));
+        if(ActualAmount>iAmount)
         {
-
-
+            Connection.Update("UPDATE `boninventory` SET `amount` = '"+(ActualAmount-iAmount)+"' WHERE barcode="+iBarcode+" AND BonID="+iBonID);
+            Connection.Update("UPDATE `inventory` SET `amount` =`amount`+'"+iAmount+"' WHERE `barcode` ="+iBarcode);
+            return true;
         }
-        else
+        else if(ActualAmount==iAmount)
         {
-
+            Connection.Update("DELETE FROM `boninventory` WHERE barcode="+iBarcode+" AND BonID="+iBonID);
+            return  true;
         }
+        ErrorMessage("Artikel nicht auf Bon");
+        return false;
+
     }
 
     /**
@@ -181,34 +182,24 @@ public class cashRegisterSystem
     /**
      * Function: otherPrice
      * @author Daniel
-     * @param ActualCart
-     * @param cBarcode
-     * @param dprice
      * @return successful if the price was changed manually, returns false if the article(barcode) isn't in the cart with
      * an error message for the wrong article
      *
      * searches for the specific item in the cart, so it has to be added before
      * after the successful found of the article the price will be changed by the given parameter
      */
-    public boolean otherPrice(cart ActualCart, char cBarcode[], double dprice)
+    public boolean otherPrice(long iBarcode,float Price, int BonID)
     {
-        int iCurrentCart=0;
-        if(dprice<0)
+        ConnectionConfiguration Connection =new ConnectionConfiguration();
+        if(Price>=0)
         {
-            return false;
+            if(Connection.Update("UPDATE `boninventory` SET `Price` = "+Price+" WHERE `BonID` ="+BonID+" AND `barcode`="+iBarcode))
+            {
+                return true;
+            }
         }
-        iCurrentCart=searchArticleInCart(ActualCart,cBarcode);
-
-        if(iCurrentCart==-1)
-        {
-            wrongArticle(cBarcode);
-            return false;
-        }
-        else
-        {
-            ActualCart.getArticle().get(iCurrentCart).setPrice(dprice);
-            return true;
-        }
+        ErrorMessage("Arikel darf kein negativen Preis haben");
+        return false;
     }
 
     //add Price when scanned
@@ -267,8 +258,6 @@ public class cashRegisterSystem
     /**
      * Function: newItem
      * @author Karl
-     * @param cBarcode
-     * @param sName
      * @param dPrice
      * @param iAmount
      * @param bisFood
@@ -276,37 +265,38 @@ public class cashRegisterSystem
      *
      * adds a new article into the inventory list
      */
-    public boolean newItem(char[] cBarcode, String sName, double dPrice,int iAmount, boolean bisFood )
+    public boolean newItem(long iBarcode, String Name, double dPrice,int iAmount, boolean bisFood )
     {
-        inventoryArticle newArticle=new inventoryArticle(cBarcode, sName, iAmount,dPrice);
-        newArticle.setFood(bisFood);
-
-        inventory.add(newArticle);
-        return true;
+        if (dPrice<=0)
+        {
+            ErrorMessage("Artikel darf keinen negativen Preis haben");
+            return false;
+        }
+        if(AmountArticleInventory(iBarcode)!=-1)
+        {
+            ErrorMessage("Artikel existiert schon, um Anzahl zu erhöhen bitte Update Funktion benutzen.");
+            return false;
+        }
+        ConnectionConfiguration Connection =new ConnectionConfiguration();
+        return Connection.Update("INSERT INTO `inventory` (`barcode`, `name`, `amount`, `price`, `is_food`) VALUES ('"+iBarcode+"', '"+Name+"', '"+iAmount+"', '"+dPrice+"', "+bisFood+")");
     }
 
     /**
      * Function: removeItem
      * @author Tobias
-     * @param cBarcode
      * @return successful if item was removed from the inventory, failed if item wasn't found
      *
      * remove a specific item from the inventory list
      */
-    public boolean removeItem(char[] cBarcode)
+    public boolean removeItem(long iBarcode)
     {
-        inventoryArticle toBeRemoved;
-        toBeRemoved = searchArticle(cBarcode);
-        if(toBeRemoved != null)
+        if(AmountArticleInventory(iBarcode)==-1)
         {
-            inventory.remove(toBeRemoved);
-            writeInventory();
-            return true;
-        }
-        else
-        {
+            ErrorMessage("Artikel existiert nicht");
             return false;
         }
+        ConnectionConfiguration Connection =new ConnectionConfiguration();
+        return Connection.Update("DELETE FROM `inventory` WHERE `barcode` = "+iBarcode);
     }
     //Display Barcode, Name, Price, new Price, Amount (and Picture) from a Article
 

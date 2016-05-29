@@ -20,6 +20,7 @@ public class Main {
         char[] cBarcode=new char[13];
         int iAmount;
         String sName;
+        float fPrice;
         double dPrice;
         boolean bIsFood;
 
@@ -61,7 +62,7 @@ public class Main {
                 else if(iMenue==3)
                 {
                     System.out.println("Barcode:");
-                    cBarcode=sArticle.next().toCharArray();
+                    iBarcode=Long.parseLong(sArticle.next());
                     System.out.println("Name:");
                     sName=sArticle.next();
                     System.out.println("Preis:");
@@ -70,13 +71,13 @@ public class Main {
                     iAmount=Integer.parseInt(sArticle.next());
                     System.out.println("Lebensmittel, ja=1, nein=0");
                     bIsFood=Boolean.parseBoolean(sArticle.next());
-                    crsREWE.newItem(cBarcode, sName, dPrice, iAmount, bIsFood);
+                    crsREWE.newItem(iBarcode, sName, dPrice, iAmount, bIsFood);
                 }
                 else if(iMenue==4)
                 {
                     System.out.println("Barcode:");
-                    cBarcode=sArticle.next().toCharArray();
-                    if(crsREWE.removeItem(cBarcode))
+                    iBarcode=Long.parseLong(sArticle.next());
+                    if(crsREWE.removeItem(iBarcode))
                     {
                         System.out.println(new String(cBarcode)+ " wurde aus dem Inventar entfernt");
                     }
@@ -136,16 +137,24 @@ public class Main {
                 else if(iMenue==2)
                 {
                     System.out.println("Barcode:");
-                    cBarcode=sArticle.next().toCharArray();
+                    iBarcode=Long.parseLong(sArticle.next());
                     System.out.println("Neuer Preis:");
-                    dPrice=Double.parseDouble(sArticle.next());
-                    crsREWE.otherPrice(caTempCustomer,cBarcode,dPrice);
+                    fPrice=Float.parseFloat(sArticle.next());
+                    crsREWE.otherPrice(iBarcode, fPrice, 2);
                 }
                 else if(iMenue==3)
                 {
                     System.out.println("Rabatt, in Prozent:");
                     iAmount=Integer.parseInt(sArticle.next());
                     crsREWE.discount(caTempCustomer,iAmount);
+                }
+                else if(iMenue==4)
+                {
+                    System.out.println("Barcode:");
+                    iBarcode=Long.parseLong(sArticle.next());
+                    System.out.println("Menge:");
+                    iAmount=Integer.parseInt(sArticle.next());
+                    crsREWE.delArticle(iBarcode, iAmount, 2);
                 }
                 else if(iMenue==0)
                 {
